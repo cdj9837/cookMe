@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "550421777408",
+    "firebase_url": "https://cookme-3310.firebaseio.com",
+    "project_id": "cookme-3310",
+    "storage_bucket": "cookme-3310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550421777408:android:5fc0347c04de1ab2f7dce5",
+        "android_client_info": {
+          "package_name": "com.example.cookme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550421777408-f5kp4j2ujbkjmes3c2elkd2qge0co5jn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnV6UGHUAK7Dv17bjOdG3D3kfQo6GuriA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550421777408-f5kp4j2ujbkjmes3c2elkd2qge0co5jn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
