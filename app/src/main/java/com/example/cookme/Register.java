@@ -33,11 +33,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etName_R = (EditText) findViewById(R.id.etName_R);
-        etEmail_R = (EditText) findViewById(R.id.etEmail_R);
-        etPassword_R = (EditText) findViewById(R.id.etPassword_R);
-        registerBtn = (Button) findViewById(R.id.RegisterBtn);
-        signInLink = (TextView) findViewById(R.id.signInLink);
+        etName_R = findViewById(R.id.etName_R);
+        etEmail_R = findViewById(R.id.etEmail_R);
+        etPassword_R = findViewById(R.id.etPassword_R);
+        registerBtn = findViewById(R.id.RegisterBtn);
+        signInLink = findViewById(R.id.signInLink);
 
         firebaseAuth =FirebaseAuth.getInstance();
 
