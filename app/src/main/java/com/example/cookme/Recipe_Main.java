@@ -7,20 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class Recipe_Main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button recipe_button = (Button) findViewById(R.id.recipe_button);
-        recipe_button.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_recipe__main);
+        Button add_recipe_button = (Button) findViewById(R.id.add_button);
+        add_recipe_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Recipe_Main.class);
+                Intent i = new Intent(getApplicationContext(), Add_Recipe_Name.class);
                 startActivity(i);
             }
         });
-
     }
 }

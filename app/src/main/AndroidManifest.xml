@@ -9,15 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Add_Recipe_Direction"></activity>
+        <activity android:name=".Add_Ingredients" />
+        <activity android:name=".Add_Recipe_Name">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Recipe_Main" >
+        <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+        </activity>
+        <activity android:name=".Register">
+
+        </activity>
+        <activity android:name=".Login" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
