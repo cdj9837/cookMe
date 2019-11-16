@@ -44,5 +44,14 @@
         android:layout_marginBottom="246dp"
         android:background="@drawable/grocery_list_button"/>
 
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="6dp"
+        android:text="Logout " />
+
 
 </RelativeLayout>
