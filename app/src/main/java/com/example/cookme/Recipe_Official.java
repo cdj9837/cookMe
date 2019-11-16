@@ -6,12 +6,23 @@ public class Recipe_Official {
     //Added later 3:40PM 11/13/2019 Everything else worked well
     private String INGREDIENT_NAME;
     private String INGREDIENT_AMOUNT;
+    private String INGREDIENT_UNIT;
     private String INGREDIENT_NOTES;
 
-    public Recipe_Official(String INGREDIENT_NAME, String INGREDIENT_AMOUNT, String INGREDIENT_NOTES) {
+
+    public Recipe_Official(String INGREDIENT_NAME, String INGREDIENT_AMOUNT, String INGREDIENT_UNIT, String INGREDIENT_NOTES) {
         this.INGREDIENT_NAME = INGREDIENT_NAME;
         this.INGREDIENT_AMOUNT = INGREDIENT_AMOUNT;
+        this.INGREDIENT_UNIT = INGREDIENT_UNIT;
         this.INGREDIENT_NOTES = INGREDIENT_NOTES;
+    }
+
+    public String getINGREDIENT_UNIT() {
+        return INGREDIENT_UNIT;
+    }
+
+    public void setINGREDIENT_UNIT(String INGREDIENT_UNIT) {
+        this.INGREDIENT_UNIT = INGREDIENT_UNIT;
     }
 
     public String getINGREDIENT_NAME() {

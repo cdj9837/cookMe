@@ -46,7 +46,7 @@ public class Add_Recipe_Name extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String current_recipe = recipe_name.getText().toString();
                         getValues();
-                        ref.child(current_recipe).child("Recipe Name").setValue(recipe_test);
+                        ref.child(current_recipe).child("Recipe Name").setValue(current_recipe);
                         Toast.makeText(getApplicationContext(),"Recipe's Name Added", Toast.LENGTH_LONG).show();
                     }
 
@@ -67,6 +67,3 @@ public class Add_Recipe_Name extends AppCompatActivity {
         recipe_test.setRECIPE_NAME(recipe_name.getText().toString());
     }
 }
-
-
-

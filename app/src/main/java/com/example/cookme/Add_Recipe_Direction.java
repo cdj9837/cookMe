@@ -40,7 +40,8 @@ public class Add_Recipe_Direction extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         getValues();
-                        ref.child(recipe_name).child("Recipe Direction").setValue(recipe_test);
+                        String current_direction = recipe_direction.getText().toString();
+                        ref.child(recipe_name).child("Recipe Direction").setValue(current_direction);
                         Toast.makeText(getApplicationContext(),"Recipe's Direction Added", Toast.LENGTH_LONG).show();
                     }
 

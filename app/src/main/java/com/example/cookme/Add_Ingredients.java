@@ -22,6 +22,7 @@ import java.util.List;
 public class Add_Ingredients extends AppCompatActivity {
     EditText ingredient_name;
     EditText ingredient_amount;
+    EditText ingredient_unit;
     EditText ingredient_note;
 
     FirebaseDatabase database;
@@ -35,6 +36,7 @@ public class Add_Ingredients extends AppCompatActivity {
 
         ingredient_name = (EditText)findViewById(R.id.ingredient_name_edit);
         ingredient_amount = (EditText)findViewById(R.id.ingredient_amount_edit);
+        ingredient_unit = (EditText)findViewById(R.id.ingredient_unit_edit);
         ingredient_note = (EditText)findViewById(R.id.ingredient_note_edit);
 
         Button done_ingredient_button = (Button) findViewById(R.id.done_ingredient_button);
@@ -56,7 +58,7 @@ public class Add_Ingredients extends AppCompatActivity {
                         String current_ingredient = ingredient_name.getText().toString();
                         ref.child(recipe_name).child("Recipe's Ingredients").child(current_ingredient).setValue(recipe_test);
                         Toast.makeText(getApplicationContext(),"Ingredients Added", Toast.LENGTH_LONG).show();
-                        }
+                    }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -78,6 +80,7 @@ public class Add_Ingredients extends AppCompatActivity {
     {
         recipe_test.setINGREDIENT_NAME(ingredient_name.getText().toString());
         recipe_test.setINGREDIENT_AMOUNT(ingredient_amount.getText().toString());
+        recipe_test.setINGREDIENT_UNIT(ingredient_unit.getText().toString());
         recipe_test.setINGREDIENT_NOTES(ingredient_note.getText().toString());
     }
 }
