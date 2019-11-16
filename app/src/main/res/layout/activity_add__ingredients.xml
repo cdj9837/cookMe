@@ -67,7 +67,8 @@
         android:layout_marginTop="111dp"
         android:layout_marginEnd="61dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:hint="@string/edtx1"/>
 
     <EditText
         android:id="@+id/ingredient_amount_edit"
@@ -79,6 +80,7 @@
         android:layout_marginEnd="61dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:hint="@string/edtx2"
         />
     <EditText
         android:id="@+id/ingredient_unit_edit"
@@ -89,7 +91,8 @@
         android:layout_marginTop="223dp"
         android:layout_marginEnd="64dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:hint="@string/edtx3"/>
 
     <EditText
         android:id="@+id/ingredient_note_edit"
@@ -100,7 +103,8 @@
         android:layout_marginTop="283dp"
         android:layout_marginEnd="64dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:hint="@string/edtx4"/>
 
     <Button
         android:id="@+id/add_ingredient_button"

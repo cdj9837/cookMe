@@ -64,6 +64,7 @@ public class Add_Ingredients extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
+
                 });
             }
         });
