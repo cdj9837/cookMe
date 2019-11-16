@@ -31,7 +31,7 @@
         android:layout_marginEnd="300dp"
         android:layout_marginRight="300dp"
         android:layout_marginBottom="6dp"
-        android:text="Back" />
+        android:background="@drawable/back_button" />
 
     <Button
         android:id="@+id/newUser"
