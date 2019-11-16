@@ -4,17 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Recipe_Direction">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_main"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+    tools:context=".Add_Recipe_Direction"
+    android:background="@drawable/recipe_background">
 
     <TextView
         android:id="@+id/recipe_direction_view"
@@ -44,9 +35,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="53dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginRight="167dp"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/done_button" />
 
 </RelativeLayout>
