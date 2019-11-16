@@ -24,11 +24,26 @@ public class MainActivity extends AppCompatActivity {
                 openInventory();
             }
         });
+
+        recipe = (Button) findViewById(R.id.recipe);
+        recipe.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+                openRecipe();
+            }
+        });
     }
 
     public void openInventory()
     {
         Intent intent = new Intent(this, Inventory.class);
+        startActivity(intent);
+    }
+
+    public void openRecipe()
+    {
+        Intent intent = new Intent(this, Recipe_Main.class);
         startActivity(intent);
     }
 }

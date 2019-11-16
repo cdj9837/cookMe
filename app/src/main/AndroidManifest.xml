@@ -21,6 +21,11 @@
         <activity android:name=".Register"></activity>
         <activity android:name=".addItem"></activity>
         <activity android:name=".addUser"></activity>
+        <activity android:name=".Add_Recipe_Name"></activity>
+        <activity android:name=".Add_Ingredients"></activity>
+        <activity android:name=".Add_Recipe_Direction"></activity>
+        <activity android:name=".Recipe_Main"></activity>
+
     </application>
 
 </manifest>
