@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register">
+        <activity android:name=".Inventory">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,6 +18,14 @@
         </activity>
         <activity android:name=".Login"></activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Register"></activity>
+        <activity android:name=".addItem"></activity>
+        <activity android:name=".addUser"></activity>
+        <activity android:name=".Add_Recipe_Name"></activity>
+        <activity android:name=".Add_Ingredients"></activity>
+        <activity android:name=".Add_Recipe_Direction"></activity>
+        <activity android:name=".Recipe_Main"></activity>
+
     </application>
 
 </manifest>
