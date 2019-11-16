@@ -7,6 +7,27 @@
     tools:context=".MainActivity"
     android:background="@drawable/recipe_background">
 
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLV"
+        app:layout_constraintVertical_bias="0.567"
+        android:background="@drawable/plus_square_button"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/back_button"
+        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addButton" />
+
     <ListView
         android:id="@+id/recipeLV"
         android:layout_width="408dp"
@@ -20,4 +41,5 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

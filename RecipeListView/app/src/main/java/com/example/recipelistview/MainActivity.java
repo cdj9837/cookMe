@@ -27,12 +27,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     ListView recipeLV;
     long recipeCount;
 
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
