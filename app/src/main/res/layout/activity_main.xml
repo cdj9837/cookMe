@@ -18,7 +18,7 @@
         android:layout_marginStart="83dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="507dp"
-        android:text="Inventory List" />
+        android:background="@drawable/inventory_list"/>
 
     <Button
         android:id="@+id/recipe"

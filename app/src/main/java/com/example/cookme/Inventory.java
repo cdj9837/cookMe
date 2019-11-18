@@ -35,31 +35,6 @@ public class Inventory extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        addButton = (Button) findViewById(R.id.addItem);
-        addButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                openAddItem();
-            }
-        });
-
-        backButton =(Button) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openBack();
-            }
-        });
-
-        addUser = (Button) findViewById(R.id.addUser);
-        addUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddUser();
-            }
-        });
-
         inventoryLV = (ListView) findViewById(R.id.itemList);
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
 
@@ -85,6 +60,31 @@ public class Inventory extends AppCompatActivity
 
         IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
         inventoryLV.setAdapter(adapter);
+
+        addButton = (Button) findViewById(R.id.addItem);
+        addButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                openAddItem();
+            }
+        });
+
+        backButton =(Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openBack();
+            }
+        });
+        addUser = (Button) findViewById(R.id.addUser);
+        addUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddUser();
+            }
+        });
+
 
     }
 
