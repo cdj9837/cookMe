@@ -7,16 +7,6 @@
     tools:context=".Inventory"
     android:background="@drawable/inventory_background">
 
-    <ListView
-        android:id="@+id/itemList"
-        android:layout_width="match_parent"
-        android:layout_height="594dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="-6dp"
-        android:layout_marginBottom="86dp">
-
-    </ListView>
-
     <Button
         android:id="@+id/addItem"
         android:layout_width="70dp"
@@ -46,5 +36,15 @@
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="605dp"
         android:background="@drawable/plus_round_button" />
+
+    <ListView
+        android:id="@+id/itemList"
+        android:layout_width="match_parent"
+        android:layout_height="594dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-6dp"
+        android:layout_marginBottom="86dp">
+
+    </ListView>
 
 </RelativeLayout>

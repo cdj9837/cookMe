@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Inventory extends AppCompatActivity
 {
-    private static final String TAG = "Inventory";
+    private static final String TAG = "MainActivity";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
     Button addButton;
