@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ForgotPassword"></activity>
-        <activity android:name=".Login">
+        <activity android:name=".Inventory">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Inventory"></activity>
+        <activity android:name=".Login"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Register"></activity>
         <activity android:name=".addItem"></activity>
