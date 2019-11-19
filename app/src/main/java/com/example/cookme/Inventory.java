@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,11 +25,15 @@ public class Inventory extends AppCompatActivity
 {
     private static final String TAG = "MainActivity";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     Button addButton;
     Button backButton;
     Button addUser;
     ListView inventoryLV;
+    String Uid;
+    String groupId;
 
 
     @Override
@@ -38,6 +44,14 @@ public class Inventory extends AppCompatActivity
         inventoryLV = (ListView) findViewById(R.id.itemList);
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        Uid = firebaseUser.getUid();
+        //groupId = mRootRef.child("groupID").child(Uid);
+
+        final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
+
         //TODO This .child("1") is current group. Will need to be passed in from another activity or gotten from accessing currently logged in UID and getting it's group number.
         mRootRef.child("Inventory").child("1").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -47,6 +61,7 @@ public class Inventory extends AppCompatActivity
                         Ingredients r = inventorySnapShot.getValue(Ingredients.class);
                         ingredientList.add(r);
                     }
+                    adapter.notifyDataSetChanged();
                 } catch(Exception e){
                     e.printStackTrace();
                 }
@@ -58,7 +73,6 @@ public class Inventory extends AppCompatActivity
             }
         });
 
-        IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
         inventoryLV.setAdapter(adapter);
 
         addButton = (Button) findViewById(R.id.addItem);
@@ -84,8 +98,6 @@ public class Inventory extends AppCompatActivity
                 openAddUser();
             }
         });
-
-
     }
 
     public void openBack ()
