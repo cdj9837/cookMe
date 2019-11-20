@@ -10,36 +10,37 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
-public class Listview_Adapter extends ArrayAdapter<Recipe> {
+public class Listview_Adapter extends ArrayAdapter<MissingIngredientFromRecipe> { //uses new class "MissingIngredientFromRecipe.java"
 
+    private static final String TAG = "RecipeListAdapter";
     private Context mContext;
     int mResource;
-    public Listview_Adapter(@NonNull Context context, int resource, @NonNull List<Recipe> objects) {
+
+    public Listview_Adapter(@NonNull Context context, int resource, @NonNull ArrayList<MissingIngredientFromRecipe> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
     }
 
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        // Get the recipe information
+        //get the recipe info
         String name = getItem(position).getRecipeName();
-        String num = String.valueOf(getItem(position).getRecipeID());
+        String num = String.valueOf(getItem(position).getNumMissingIngredients());
 
-        //create the recipe object with the info
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvName = (TextView)convertView.findViewById(R.id.recipe_name_detail_view);
-        TextView tvMissing_ingredient = (TextView)convertView.findViewById(R.id.missing_ingredient_view);
+        TextView tvNum = (TextView)convertView.findViewById(R.id.missing_ingredient_view);
 
         tvName.setText(name);
-        tvMissing_ingredient.setText(num);
+        tvNum.setText(num);
+
         return convertView;
-
     }
-
-
 }
