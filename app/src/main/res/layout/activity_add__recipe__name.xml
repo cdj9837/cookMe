@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".Add_Recipe_Name">
+=======
+    tools:context=".Add_Recipe_Name"
+    android:background="@drawable/recipe_name_background">
+
+>>>>>>> master
     <TextView
         android:id="@+id/recipe_name_view"
         android:layout_width="wrap_content"
@@ -12,9 +18,16 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
         android:layout_marginTop="150dp"
         android:layout_marginEnd="150dp"
         android:text="Recipe's Name"
+=======
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="142dp"
+        android:text="Recipe's Name"
+        android:textSize="20dp"
+>>>>>>> master
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="97dp" />
@@ -26,9 +39,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
         android:layout_marginTop="198dp"
         android:layout_marginEnd="91dp"
         android:ems="10"
+=======
+        android:layout_marginTop="197dp"
+        android:layout_marginEnd="66dp"
+        android:ems="13"
+>>>>>>> master
         android:gravity="start|top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +66,7 @@
         android:layout_marginBottom="250dp"
         android:background="@drawable/done_button" />
 
+<<<<<<< HEAD
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -58,4 +78,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
+=======
+>>>>>>> master
 </RelativeLayout>

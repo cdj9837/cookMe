@@ -6,6 +6,7 @@ public class Recipe_Official {
     //Added later 3:40PM 11/13/2019 Everything else worked well
     private String INGREDIENT_NAME;
     private String INGREDIENT_AMOUNT;
+<<<<<<< HEAD
     private String INGREDIENT_UNIT;
     private String INGREDIENT_NOTES;
 
@@ -25,6 +26,16 @@ public class Recipe_Official {
         this.INGREDIENT_UNIT = INGREDIENT_UNIT;
     }
 
+=======
+    private String INGREDIENT_NOTES;
+
+    public Recipe_Official(String INGREDIENT_NAME, String INGREDIENT_AMOUNT, String INGREDIENT_NOTES) {
+        this.INGREDIENT_NAME = INGREDIENT_NAME;
+        this.INGREDIENT_AMOUNT = INGREDIENT_AMOUNT;
+        this.INGREDIENT_NOTES = INGREDIENT_NOTES;
+    }
+
+>>>>>>> master
     public String getINGREDIENT_NAME() {
         return INGREDIENT_NAME;
     }
@@ -72,4 +83,8 @@ public class Recipe_Official {
     public void setRECIPE_DIRECTION(String RECIPE_DIRECTION) {
         this.RECIPE_DIRECTION = RECIPE_DIRECTION;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".Add_Ingredients">
 
 
@@ -131,6 +132,122 @@
         android:layout_marginRight="94dp"
         android:layout_marginBottom="200dp"
         android:background="@drawable/done_button" />
+=======
+    tools:context=".Add_Ingredients"
+    android:background="@drawable/add_ingredient_background">
+
+    <!-- <TextView
+       android:id="@+id/ingredient_name_view"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginStart="72dp"
+       android:layout_marginTop="136dp"
+       android:text="Name" />
+
+   <TextView
+       android:id="@+id/ingredient_amount_view"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginStart="60dp"
+       android:layout_marginTop="185dp"
+       android:text="Amount" />
+
+   <TextView
+       android:id="@+id/ingredient_unit_view"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginStart="76dp"
+       android:layout_marginTop="235dp"
+       android:text="Unit" />
+
+
+   <TextView
+       android:id="@+id/ingredient_note_view"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginStart="75dp"
+       android:layout_marginTop="290dp"
+       android:text="Note" /> -->
+
+   <EditText
+       android:id="@+id/ingredient_name_edit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentEnd="true"
+       android:layout_marginTop="113dp"
+       android:layout_marginEnd="61dp"
+       android:ems="10"
+       android:inputType="textPersonName" />
+
+   <EditText
+       android:id="@+id/ingredient_amount_edit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentEnd="true"
+       android:layout_marginTop="170dp"
+       android:layout_marginEnd="61dp"
+       android:ems="10"
+       android:inputType="number"
+       />
+
+   <EditText
+       android:id="@+id/ingredient_unit_edit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentEnd="true"
+       android:layout_marginTop="230dp"
+       android:layout_marginEnd="61dp"
+       android:ems="10"
+       android:inputType="textPersonName" />
+
+   <EditText
+       android:id="@+id/ingredient_note_edit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentEnd="true"
+       android:layout_marginTop="290dp"
+       android:layout_marginEnd="61dp"
+       android:ems="10"
+       android:inputType="textPersonName" />
+
+   <Button
+       android:id="@+id/add_ingredient_button"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentBottom="true"
+       android:layout_centerInParent="true"
+       android:layout_marginEnd="218dp"
+       android:layout_marginRight="218dp"
+       android:layout_marginBottom="271dp"
+       android:background="@drawable/plus_square_button" />
+
+   <Button
+       android:id="@+id/done_ingredient_button"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentBottom="true"
+       android:layout_centerInParent="true"
+       android:layout_marginEnd="94dp"
+       android:layout_marginRight="94dp"
+       android:layout_marginBottom="270dp"
+       android:background="@drawable/done_button" />
+>>>>>>> master
 
 
 </RelativeLayout>

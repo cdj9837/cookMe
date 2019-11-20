@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".Add_Recipe_Direction">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main"
@@ -15,6 +16,11 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
+=======
+    tools:context=".Add_Recipe_Direction"
+    android:background="@drawable/recipe_background">
+
+>>>>>>> master
 
     <TextView
         android:id="@+id/recipe_direction_view"
@@ -22,8 +28,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+<<<<<<< HEAD
         android:layout_marginTop="100dp"
         android:text="Cooking Direction" />
+=======
+        android:layout_marginTop="113dp"
+        android:text="Cooking Direction"
+        android:textSize="20dp"/>
+>>>>>>> master
 
     <EditText
         android:id="@+id/recipe_direction_input"
@@ -44,9 +56,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
+<<<<<<< HEAD
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:layout_marginBottom="53dp"
+=======
+        android:layout_marginEnd="167dp"
+        android:layout_marginRight="167dp"
+        android:layout_marginBottom="250dp"
+>>>>>>> master
         android:background="@drawable/done_button" />
 
 </RelativeLayout>
