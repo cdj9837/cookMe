@@ -1,19 +1,11 @@
 package com.example.cookme;
 
-<<<<<<< HEAD
-import androidx.appcompat.app.AppCompatActivity;
-
-=======
->>>>>>> master
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-<<<<<<< HEAD
-=======
 
 import androidx.appcompat.app.AppCompatActivity;
->>>>>>> master
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
-        Button recipe_button = (Button) findViewById(R.id.recipe_button);
+        Button recipe_button = (Button) findViewById(R.id.recipe);
         recipe_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-=======
         inventory = (Button) findViewById(R.id.inventory);
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +54,5 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, Recipe_Main.class);
         startActivity(intent);
->>>>>>> master
     }
 }

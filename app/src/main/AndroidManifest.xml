@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cookme">
 
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,29 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".Add_Recipe_Direction"></activity>
-        <activity android:name=".Add_Ingredients" />
-        <activity android:name=".Add_Recipe_Name">
+
+        <activity android:name=".ForgotPassword"></activity>
+        <activity android:name=".Inventory">
+
 
         </activity>
-        <activity android:name=".Recipe_Main" >
-        </activity>
-        <activity android:name=".Register">
-=======
+
         <activity android:name=".Login">
->>>>>>> master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity" />
-=======
-        <activity android:name=".Inventory"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Register"></activity>
         <activity android:name=".addItem"></activity>
@@ -43,7 +34,7 @@
         <activity android:name=".Add_Recipe_Direction"></activity>
         <activity android:name=".Recipe_Main"></activity>
 
->>>>>>> master
+
     </application>
 
 </manifest>
