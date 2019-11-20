@@ -6,10 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     Button logout;
 
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    DatabaseReference mDatabase;
+    String userID;
+    String groupID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +62,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null){
+            userID = firebaseUser.getUid();
+        }
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("groupID").child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                groupID = String.valueOf(dataSnapshot.getValue()) ;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        System.out.println(groupID);
+
     }
 
     public void openInventory()
