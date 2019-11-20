@@ -7,6 +7,14 @@
     tools:context=".Recipe_Main"
     android:background="@drawable/recipe_background">
 
+    <ListView
+        android:id="@+id/recipe_listview"
+        android:layout_width="match_parent"
+        android:layout_height="561dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="63dp" />
 
     <Button
         android:id="@+id/add_button"

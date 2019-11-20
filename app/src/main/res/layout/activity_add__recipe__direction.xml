@@ -7,14 +7,16 @@
     tools:context=".Add_Recipe_Direction"
     android:background="@drawable/recipe_background">
 
+
     <TextView
         android:id="@+id/recipe_direction_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Cooking Direction" />
+        android:layout_marginTop="113dp"
+        android:text="Cooking Direction"
+        android:textSize="20dp"/>
 
     <EditText
         android:id="@+id/recipe_direction_input"
