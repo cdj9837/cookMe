@@ -68,6 +68,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         progressDialog.setMessage("Registering User...");
         progressDialog.show();
 
+        final Intent home_activity = new Intent(this, MainActivity.class);
+
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -75,10 +77,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         if (task.isSuccessful()){
                             Toast.makeText(Register.this, "Register Sucessfully",
                                     Toast.LENGTH_SHORT).show();
+                            startActivity(home_activity);
                         }
                         else{
                             Toast.makeText(Register.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
+                            progressDialog.hide();
                         }
                     }
                 });

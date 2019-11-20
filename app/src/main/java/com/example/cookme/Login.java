@@ -17,12 +17,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     Button loginBtn;
     EditText etEmail, etPassword;
-    TextView tvregisterLink;
+    TextView tvregisterLink, tvForgotPwLink;
 
     ProgressDialog progressDialog;
 
@@ -37,9 +38,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         etPassword = (EditText) findViewById(R.id.etPassword);
         loginBtn = (Button) findViewById(R.id.LoginBtn);
         tvregisterLink = (TextView) findViewById(R.id.tvRegisterLink);
+        tvForgotPwLink = (TextView) findViewById(R.id.tvForgotPwLink);
 
         loginBtn.setOnClickListener(this);
         tvregisterLink.setOnClickListener(this);
+        tvForgotPwLink.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(this);
 
@@ -72,6 +75,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 else{
                     Toast.makeText(Login.this, task.getException().getMessage(),
                             Toast.LENGTH_SHORT).show();
+                    progressDialog.hide();
                 }
             }
         });
@@ -82,12 +86,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId()){
             case R.id.LoginBtn:
                 loginUser();
-//                startActivity(new Intent(this, Register.class));
-                 break;
+                break;
             case R.id.tvRegisterLink:
                 Intent i = new Intent(this, Register.class);
                 startActivity(i);
                 break;
+            case R.id.tvForgotPwLink:
+                Intent g = new Intent(this, ForgotPassword.class);
+                startActivity(g);
+                break;
         }
     }
+
+
+
 }

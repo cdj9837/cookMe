@@ -23,13 +23,19 @@ class Ingredients implements Serializable {
         this.Amount =  Amount;
     }*/
 
-    public Ingredients(String Name, String Notes, String Unit, double Amount){
+    public Ingredients(String Name, String Notes, String Unit, double Amount) {
         this.Name = Name;
         this.Notes = Notes;
         this.Unit = Unit;
         this.IngredientID = 0;
         this.DisplayAmount = "";
         this.Amount = Amount;
+    }
+
+    public Ingredients(String name, String unit, long amount) {
+        Name = name;
+        Unit = unit;
+        Amount = amount;
     }
 
     public String getName() {
