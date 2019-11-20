@@ -2,32 +2,66 @@ package com.example.cookme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Inventory extends AppCompatActivity
 {
+    private static final String TAG = "MainActivity";
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+
     Button addButton;
     Button backButton;
     Button addUser;
-    ListView list;
-    ArrayList<String> arrayList = new ArrayList<>();
-    ArrayAdapter<String> adapter;
+    ListView inventoryLV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
+        inventoryLV = (ListView) findViewById(R.id.itemList);
+        final ArrayList<Ingredients> ingredientList = new ArrayList<>();
 
-        addButton = (Button) findViewById(R.id.addButton);
+        //TODO This .child("1") is current group. Will need to be passed in from another activity or gotten from accessing currently logged in UID and getting it's group number.
+        mRootRef.child("Inventory").child("1").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+                    for (DataSnapshot inventorySnapShot : dataSnapshot.getChildren()) {
+                        Ingredients r = inventorySnapShot.getValue(Ingredients.class);
+                        ingredientList.add(r);
+                    }
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "onCancelled: ", databaseError.toException() );
+            }
+        });
+
+        IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
+        inventoryLV.setAdapter(adapter);
+
+        addButton = (Button) findViewById(R.id.addItem);
         addButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -43,8 +77,7 @@ public class Inventory extends AppCompatActivity
                 openBack();
             }
         });
-
-        addUser = (Button) findViewById(R.id.newUser);
+        addUser = (Button) findViewById(R.id.addUser);
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
