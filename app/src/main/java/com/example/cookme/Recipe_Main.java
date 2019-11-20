@@ -32,6 +32,15 @@ public class Recipe_Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe__main);
 
+        Button add_recipe_button = (Button) findViewById(R.id.add_button);
+        add_recipe_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Add_Recipe_Name.class);
+                startActivity(i);
+            }
+        });
+
         recipe_listview = (ListView)findViewById(R.id.recipe_listview);
 
         final ArrayList<Recipe> recipeList = new ArrayList<>();

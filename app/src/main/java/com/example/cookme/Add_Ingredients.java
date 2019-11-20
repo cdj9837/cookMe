@@ -38,38 +38,41 @@ public class Add_Ingredients extends AppCompatActivity {
         add_ingredient_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(ingredient_name.getText().toString()) || TextUtils.isEmpty(ingredient_amount.getText().toString())
-                        || TextUtils.isEmpty(ingredient_unit.getText().toString()) || TextUtils.isEmpty(ingredient_note.getText().toString()))
-                {
-                    Toast.makeText(getApplicationContext(), "Please fill in the blank", Toast.LENGTH_LONG).show();
+                if(TextUtils.isEmpty(ingredient_name.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Please type an ingredient name", Toast.LENGTH_LONG).show();
+                }else if(TextUtils.isEmpty(ingredient_amount.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Please type an ingredient amount", Toast.LENGTH_LONG).show();
+                }else if(TextUtils.isEmpty(ingredient_unit.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "Please type ingredient unit", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
+                    String ingredient_note2 = "";
                     String ingredient_name2 = ingredient_name.getText().toString();
-                    String ingredient_note2 = ingredient_note.getText().toString();
                     String ingredient_unit2 = ingredient_unit.getText().toString();
                     Double ingredient_amount2 = Double.parseDouble(ingredient_amount.getText().toString());
+                    if(!TextUtils.isEmpty(ingredient_note.getText().toString())){
+                        ingredient_note2 = ingredient_note.getText().toString();
+                    }
+
                     ing_object = new Ingredients(ingredient_name2,ingredient_note2, ingredient_unit2, ingredient_amount2);
                     ingredients_temp.add(ing_object);
                     Toast.makeText(getApplicationContext(),"Ingredients Added", Toast.LENGTH_LONG).show();
                 }
+                ingredient_name.getText().clear();
+                ingredient_amount.getText().clear();
+                ingredient_note.getText().clear();
+                ingredient_unit.getText().clear();
             }
         });
         done_ingredient_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(ingredient_name.getText().toString()) || TextUtils.isEmpty(ingredient_amount.getText().toString())
-                || TextUtils.isEmpty(ingredient_unit.getText().toString()) || TextUtils.isEmpty(ingredient_note.getText().toString()))
-                {
-                    Toast.makeText(getApplicationContext(), "Please fill in the blank", Toast.LENGTH_LONG).show();
-                }
-                else
-                    {
-                    recipe_2.setIngredients(ingredients_temp);
-                    Intent i = new Intent(getApplicationContext(), Add_Recipe_Direction.class);
-                    i.putExtra("key2", recipe_2);
-                    startActivity(i);
-                }
+                recipe_2.setIngredients(ingredients_temp);
+                Intent i = new Intent(getApplicationContext(), Add_Recipe_Direction.class);
+                i.putExtra("key2", recipe_2);
+                startActivity(i);
+
             }
         });
     }

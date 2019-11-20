@@ -33,7 +33,7 @@ public class Add_Recipe_Direction extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                ref.addValueEventListener(new ValueEventListener() {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(TextUtils.isEmpty(recipe_direction.getText().toString()))
@@ -43,7 +43,7 @@ public class Add_Recipe_Direction extends AppCompatActivity {
                         else {
                             try {
                                 recipe_3.setDirections(recipe_direction.getText().toString());
-                                ref.child("Recipe").setValue(recipe_3);
+                                ref.child("Recipe").push().setValue(recipe_3);
                                 Toast.makeText(getApplicationContext(), "Recipe's Direction Added", Toast.LENGTH_LONG).show();
                                 Intent i = new Intent(getApplicationContext(), Recipe_Main.class);
                                 startActivity(i);
