@@ -49,11 +49,11 @@ public class Inventory extends AppCompatActivity
 
         Uid = firebaseUser.getUid();
         //groupId = mRootRef.child("groupID").child(Uid);
-
+        groupId = MainActivity.groupID;
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
 
         //TODO This .child("1") is current group. Will need to be passed in from another activity or gotten from accessing currently logged in UID and getting it's group number.
-        mRootRef.child("Inventory").child("1").addListenerForSingleValueEvent(new ValueEventListener() {
+        mRootRef.child("Inventory").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
