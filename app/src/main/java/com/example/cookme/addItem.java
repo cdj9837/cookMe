@@ -40,12 +40,17 @@ public class addItem extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
+        name = (EditText)findViewById(R.id.itemNameEdit);
+        amount =(EditText)findViewById(R.id.itemAmountEdit);
+        unit = (EditText)findViewById(R.id.itemUnitEdit);
+        doneButton = (Button) findViewById(R.id.doneButton);
+        backButton = (Button) findViewById(R.id.backButton);
 
         final String groupId = MainActivity.groupID;
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
 
-        doneButton = (Button) findViewById(R.id.doneButton);
+
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,9 +69,6 @@ public class addItem extends AppCompatActivity {
                         }
                         else
                         {
-                            name = (EditText)findViewById(R.id.itemNameEdit);
-                            amount =(EditText)findViewById(R.id.itemAmountEdit);
-                            unit = (EditText)findViewById(R.id.itemUnitEdit);
 
                             Name = name.getText().toString();
                             Amount = amount.getText().toString();
@@ -96,7 +98,7 @@ public class addItem extends AppCompatActivity {
             }
         });
 
-        backButton = (Button) findViewById(R.id.backButton);
+
         backButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -115,9 +117,7 @@ public class addItem extends AppCompatActivity {
 
     public void openActivity2 (final ArrayList<Ingredients> ingredientList)
     {
-        name = (EditText)findViewById(R.id.itemNameEdit);
-        amount =(EditText)findViewById(R.id.itemAmountEdit);
-        unit = (EditText)findViewById(R.id.itemUnitEdit);
+
 
         Name = name.getText().toString();
         Amount = amount.getText().toString();
