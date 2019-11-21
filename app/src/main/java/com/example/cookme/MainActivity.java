@@ -36,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button recipe_button = (Button) findViewById(R.id.recipe);
+        recipe_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Recipe_Main.class);
+                startActivity(i);
+            }
+        });
+
         inventory = (Button) findViewById(R.id.inventory);
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override

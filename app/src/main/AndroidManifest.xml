@@ -14,7 +14,6 @@
         <activity android:name=".Open_Animation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,7 +29,11 @@
         <activity android:name=".Add_Ingredients" />
         <activity android:name=".Add_Recipe_Direction" />
         <activity android:name=".Recipe_Main" />
+
         <activity android:name=".Grocery"/>
+
+        <activity android:name=".RecipeInfoActivity"></activity>
+
     </application>
 
 </manifest>

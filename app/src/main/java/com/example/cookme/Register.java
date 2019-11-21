@@ -77,8 +77,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         progressDialog.setMessage("Registering User...");
         progressDialog.show();
 
-        final Intent home_activity = new Intent(this, MainActivity.class);
-
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -86,6 +84,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         if (task.isSuccessful()){
                             Toast.makeText(Register.this, "Register Sucessfully",
                                     Toast.LENGTH_SHORT).show();
+                            Intent home_activity = new Intent(Register.this, MainActivity.class);
                             startActivity(home_activity);
                         }
                         else{
@@ -95,8 +94,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         }
                     }
                 });
-
-        startActivity(home_activity);
     }
 
 

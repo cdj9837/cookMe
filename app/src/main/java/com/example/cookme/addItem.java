@@ -111,11 +111,12 @@ public class addItem extends AppCompatActivity {
 
                                 if(key!=-1)
                                 {
-                                    long currAmount = ingredientList.get(key).getAmount();
+                                    long currAmount = (long)ingredientList.get(key).getAmount();
                                     long newAmount = currAmount + LAmount;
+
                                     //update data syntax:
                                     //mDatabase.child("users").child(userId).child("username").setValue(name);
-                                    ingredientList.get(key).setAmount(newAmount);
+                                    ingredientList.get(key).setAmount((Long)newAmount);
 
                                     mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
                                 }
