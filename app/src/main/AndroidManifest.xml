@@ -14,8 +14,6 @@
 
         <activity android:name=".ForgotPassword"></activity>
         <activity android:name=".Inventory">
-
-
         </activity>
 
         <activity android:name=".Login">

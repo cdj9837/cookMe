@@ -23,16 +23,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Inventory extends AppCompatActivity
 {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Inventory";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
+    //FirebaseAuth firebaseAuth;
+    //FirebaseUser firebaseUser;
 
     Button addButton;
     Button backButton;
     Button addUser;
     ListView inventoryLV;
-    String Uid;
+    //String Uid;
     String groupId;
 
 
@@ -44,10 +44,10 @@ public class Inventory extends AppCompatActivity
         inventoryLV = (ListView) findViewById(R.id.itemList);
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+        //firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseUser = firebaseAuth.getCurrentUser();
 
-        Uid = firebaseUser.getUid();
+        //Uid = firebaseUser.getUid();
         //groupId = mRootRef.child("groupID").child(Uid);
         groupId = MainActivity.groupID;
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
