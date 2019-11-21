@@ -112,8 +112,6 @@ public class addItem extends AppCompatActivity {
                                     long newAmount = currAmount + LAmount;
                                     //update data syntax:
                                     //mDatabase.child("users").child(userId).child("username").setValue(name);
-
-                                    //Ingredients working = ingredientList.get(key);
                                     ingredientList.get(key).setAmount(newAmount);
 
                                     mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
