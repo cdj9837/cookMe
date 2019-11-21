@@ -5,39 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_Ingredients"
-    android:background="@drawable/recipe_background">
+    android:background="@drawable/add_ingredient_background">
 
-    <TextView
-        android:id="@+id/ingredient_name_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="136dp"
-        android:text="Name:" />
-
-    <TextView
-        android:id="@+id/ingredient_amount_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="187dp"
-        android:text="Amount" />
-
-    <TextView
-        android:id="@+id/ingredient_note_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="239dp"
-        android:text="Note" />
-
-    <EditText
+     <EditText
         android:id="@+id/ingredient_name_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,11 +24,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="161dp"
+        android:layout_marginTop="170dp"
         android:layout_marginEnd="61dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         />
+    <EditText
+        android:id="@+id/ingredient_unit_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="gram, oz, litter"/>
 
     <EditText
         android:id="@+id/ingredient_note_edit"
@@ -66,11 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="222dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="283dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/add_ingredient_button"
@@ -82,8 +62,8 @@
         android:layout_centerInParent="true"
         android:layout_marginEnd="218dp"
         android:layout_marginRight="218dp"
-        android:layout_marginBottom="271dp"
-        android:background="@drawable/plus_square_button" />
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/plus_square" />
 
     <Button
         android:id="@+id/done_ingredient_button"
@@ -95,7 +75,7 @@
         android:layout_centerInParent="true"
         android:layout_marginEnd="94dp"
         android:layout_marginRight="94dp"
-        android:layout_marginBottom="270dp"
+        android:layout_marginBottom="200dp"
         android:background="@drawable/done_button" />
 
 
