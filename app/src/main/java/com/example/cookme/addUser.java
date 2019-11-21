@@ -13,6 +13,7 @@ public class addUser extends AppCompatActivity {
     EditText eTo;
     EditText eSubject;
     EditText eMsg;
+    String groupId = MainActivity.groupID;
     Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class addUser extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mess = "Come download CookMe and join my inventory\n"+eMsg.getText();
+                String mess = "Come download CookMe and join my inventory\n"+eMsg.getText()+"\n\nEnter This group number when prompted: \n\t\t"+groupId;
                 Intent it = new Intent(Intent.ACTION_SEND);
                 //it.putExtra(Intent.EXTRA_EMAIL, new String[]{eTo.getText().toString()});
                 it.putExtra(Intent.EXTRA_SUBJECT,eSubject.getText().toString());
