@@ -27,6 +27,18 @@
         android:layout_marginBottom="615dp"
         android:background="@drawable/plus_round_button" />
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="351dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toStartOf="@+id/doneButton"
+        android:background="@drawable/back_button" />
+
     <ListView
         android:id="@+id/itemList"
         android:layout_width="match_parent"
