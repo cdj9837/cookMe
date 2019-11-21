@@ -98,13 +98,16 @@ public class addItem extends AppCompatActivity {
                                 //recipe_3.setDirections(recipe_direction.getText().toString());
                                 Ingredients newIngr = new Ingredients(Name, Unit, LAmount);
                                 int key=-1;
+                                String name = newIngr.getName().toLowerCase();
                                 for(int i = 0; i<ingredientList.size(); i++)
                                 {
-                                    if(newIngr.getName().toLowerCase() == ingredientList.get(i).getName().toLowerCase())
-                                    {
+                                    if(name.equals(ingredientList.get(i).getName().toLowerCase())) {
                                         key = i;
+                                        break;
                                     }
                                 }
+
+
 
                                 if(key!=-1)
                                 {
