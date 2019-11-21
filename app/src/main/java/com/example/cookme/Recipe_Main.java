@@ -26,6 +26,7 @@ public class Recipe_Main extends AppCompatActivity {
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
     ListView recipe_listview;
+    final static ArrayList<Ingredients> ingredientsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class Recipe_Main extends AppCompatActivity {
 
         final ArrayList<Recipe> recipeList = new ArrayList<>();
         final ArrayList<MissingIngredientFromRecipe> missingList = new ArrayList<>();
-        final ArrayList<Ingredients> ingredientsList = new ArrayList<>();
+
 
         final Listview_Adapter adapter = new Listview_Adapter(this, R.layout.main_recipe_layout, missingList); //pass missingList just for display purposes.
 
