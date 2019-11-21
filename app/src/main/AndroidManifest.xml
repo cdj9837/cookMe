@@ -29,6 +29,9 @@
         <activity android:name=".Add_Ingredients" />
         <activity android:name=".Add_Recipe_Direction" />
         <activity android:name=".Recipe_Main" />
+
+        <activity android:name=".Grocery"/>
+
         <activity android:name=".RecipeInfoActivity"></activity>
 
     </application>

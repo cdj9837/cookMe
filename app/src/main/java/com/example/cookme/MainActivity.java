@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        grocery = (Button) findViewById(R.id.grocery);
+        grocery.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+                openGrocery();
+            }
+        });
+
         logout = (Button) findViewById(R.id.logoutBtn);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 logOut();
             }
         });
+
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -127,6 +138,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openLogin(){
         Intent g = new Intent(this, Login.class);
+        startActivity(g);
+    }
+
+    public void openGrocery(){
+        Intent g = new Intent(this, Grocery.class);
         startActivity(g);
     }
 }
