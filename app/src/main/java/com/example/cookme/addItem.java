@@ -133,6 +133,7 @@ public class addItem extends AppCompatActivity {
 
                             }
                         }
+                        openActivity2();
                     }
 
                     @Override
@@ -161,48 +162,9 @@ public class addItem extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openActivity2 (final ArrayList<Ingredients> ingredientList)
+    public void openActivity2 ()
     {
-
-
-        Name = name.getText().toString();
-        Amount = amount.getText().toString();
-        Unit = unit.getText().toString();
-
-        /*long LAmount = Long.parseLong(Amount);
-        //Ingredient take in: String name, String unit, long amount
-        Ingredients adding = new Ingredients(Name, Unit, LAmount);
-
-        int key=-1;
-        for(int i = 0; i<ingredientList.size(); i++)
-        {
-            if(adding.getName().toLowerCase() == ingredientList.get(i).getName().toLowerCase())
-            {
-                key = i;
-            }
-        }
-
-        if(key!=-1)
-        {
-            //update data syntax:
-            //mDatabase.child("users").child(userId).child("username").setValue(name);
-            long currAmount = ingredientList.get(key).getAmount();
-            long newAmount = currAmount + LAmount;
-
-            Ingredients working = ingredientList.get(key);
-            //ingredientList.get(key).setAmount(newAmount);
-
-            mRootRef.child("Inventory").child(groupId).child(String.valueOf(key)).setValue(newAmount);
-        }
-
-        else
-        {
-            ingredientList.add(adding);
-
-            mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
-        }
-            Intent intent = new Intent(this, Inventory.class);
+        Intent intent = new Intent(this, Inventory.class);
         startActivity(intent);
-        */
     }
 }

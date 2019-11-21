@@ -17,16 +17,24 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
     Button registerBtn;
-    EditText etName_R, etEmail_R, etPassword_R;
+    EditText etName_R, etEmail_R, etPassword_R, groupId;
     TextView signInLink;
 
     ProgressDialog progressDialog;
 
     FirebaseAuth firebaseAuth;
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         etPassword_R = findViewById(R.id.etPassword_R);
         registerBtn = findViewById(R.id.RegisterBtn);
         signInLink = findViewById(R.id.signInLink);
+        groupId = findViewById(R.id.groupID);
 
         firebaseAuth =FirebaseAuth.getInstance();
 
@@ -86,6 +95,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         }
                     }
                 });
+
+        startActivity(home_activity);
     }
 
 
