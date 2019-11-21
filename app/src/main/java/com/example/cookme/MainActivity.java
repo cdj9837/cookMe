@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference mDatabase;
     String userID;
-    String groupID;
+    public static String groupID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
