@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Recipe_Main"
-    android:background="@drawable/recipe_background">
+    android:background="@drawable/recipe_updated_01"
+    tools:context=".Recipe_Main">
 
     <ListView
         android:id="@+id/recipe_listview"
