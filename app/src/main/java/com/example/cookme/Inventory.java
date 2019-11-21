@@ -44,11 +44,6 @@ public class Inventory extends AppCompatActivity
         inventoryLV = (ListView) findViewById(R.id.itemList);
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
 
-        //firebaseAuth = FirebaseAuth.getInstance();
-        //firebaseUser = firebaseAuth.getCurrentUser();
-
-        //Uid = firebaseUser.getUid();
-        //groupId = mRootRef.child("groupID").child(Uid);
         groupId = MainActivity.groupID;
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
 

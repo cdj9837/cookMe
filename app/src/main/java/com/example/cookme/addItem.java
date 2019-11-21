@@ -31,7 +31,7 @@ public class addItem extends AppCompatActivity {
     String Name, Amount, Unit;
     String groupId = MainActivity.groupID;
 
-    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mRootRef;
 
 
     @Override
@@ -39,67 +39,60 @@ public class addItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
-        String groupId = MainActivity.groupID;
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+
+        final String groupId = MainActivity.groupID;
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
 
-        mRootRef.child("Inventory").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
-                    for (DataSnapshot inventorySnapShot : dataSnapshot.getChildren()) {
-                        Ingredients r = inventorySnapShot.getValue(Ingredients.class);
-                        ingredientList.add(r);
-                    }
-                    adapter.notifyDataSetChanged();
-                } catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "onCancelled: ", databaseError.toException() );
-            }
-        });
-
         doneButton = (Button) findViewById(R.id.doneButton);
-        //doneButton.setOnClickListener(new View.OnClickListener() {
-
+        doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //openActivity2(ingredientList);
-                doneButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                mRootRef.addListenerForSingleValueEvent(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
+                        if(TextUtils.isEmpty(name.getText().toString()))
+                        {
+                            Toast.makeText(getApplicationContext(), "Please fill in the blank", Toast.LENGTH_LONG).show();
+                        }
+                        else if(TextUtils.isEmpty(amount.getText().toString()))
+                        {
+                            Toast.makeText(getApplicationContext(), "Please fill in the blank", Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            name = (EditText)findViewById(R.id.itemNameEdit);
+                            amount =(EditText)findViewById(R.id.itemAmountEdit);
+                            unit = (EditText)findViewById(R.id.itemUnitEdit);
+
+                            Name = name.getText().toString();
+                            Amount = amount.getText().toString();
+                            Unit = unit.getText().toString();
+
+                            try {
+                                //recipe_3.setDirections(recipe_direction.getText().toString());
+                                Ingredients newIngr = new Ingredients(Name, Unit, Long.parseLong(Amount));
+                                mRootRef.child("Inventory").child(groupId).push().setValue(newIngr);
+                                Toast.makeText(getApplicationContext(), "Added new item", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(getApplicationContext(), Inventory.class);
+                                startActivity(i);
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+                        }
+                    }
 
                     @Override
-                    public void onClick(View v) {
-                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                if(TextUtils.isEmpty(recipe_direction.getText().toString()))
-                                {
-                                    Toast.makeText(getApplicationContext(), "Please fill in the blank", Toast.LENGTH_LONG).show();
-                                }
-                                else {
-                                    try {
-                                        recipe_3.setDirections(recipe_direction.getText().toString());
-                                        ref.child("Recipe").push().setValue(recipe_3);
-                                        Toast.makeText(getApplicationContext(), "Recipe's Direction Added", Toast.LENGTH_LONG).show();
-                                        Intent i = new Intent(getApplicationContext(), Recipe_Main.class);
-                                        startActivity(i);
-                                    }
-                                    catch (Exception e)
-                                    {
+                    public void onCancelled(@NonNull DatabaseError databaseError)
+                    {
 
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
+                    }
+                });
             }
         });
 
