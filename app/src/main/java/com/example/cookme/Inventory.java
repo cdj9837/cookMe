@@ -79,13 +79,13 @@ public class Inventory extends AppCompatActivity
             }
         });
 
-        backButton =(Button) findViewById(R.id.backButton);
+        /*backButton =(Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openBack();
             }
-        });
+        });*/
         addUser = (Button) findViewById(R.id.addUser);
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
