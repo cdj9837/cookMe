@@ -14,15 +14,6 @@ class Ingredients implements Serializable {
 
     }
 
-    /*public Ingredients(String Name, String Notes, String Unit, double IngredientID, String DisplayAmount, double Amount){
-        this.Name = Name;
-        this.Notes = Notes;
-        this.Unit = Unit;
-        this.IngredientID = IngredientID;
-        this.DisplayAmount = DisplayAmount;
-        this.Amount =  Amount;
-    }*/
-
     public Ingredients(String Name, String Notes, String Unit, double Amount) {
         this.Name = Name;
         this.Notes = Notes;
@@ -32,10 +23,13 @@ class Ingredients implements Serializable {
         this.Amount = Amount;
     }
 
-    public Ingredients(String name, String unit, long amount) {
+    public Ingredients(String name, String unit, double amount) {
         Name = name;
         Unit = unit;
         Amount = amount;
+        DisplayAmount = "";
+        IngredientID = 0;
+        Notes = "";
     }
 
     public String getName() {
