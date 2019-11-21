@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class addItem extends AppCompatActivity {
     Button backButton;
     EditText name,amount, unit;
     String Name, Amount, Unit;
+    String groupId = MainActivity.groupID;
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -99,10 +101,35 @@ public class addItem extends AppCompatActivity {
         //Ingredient take in: String name, String unit, long amount
         Ingredients adding = new Ingredients(Name, Unit, LAmount);
 
+        int key=-1;
+        for(int i = 0; i<ingredientList.size(); i++)
+        {
+            if(adding.getName().toLowerCase() == ingredientList.get(i).getName().toLowerCase())
+            {
+                key = i;
+            }
+        }
 
+        if(key!=-1)
+        {
+            //update data syntax:
+            //mDatabase.child("users").child(userId).child("username").setValue(name);
+            long currAmount = ingredientList.get(key).getAmount();
+            long newAmount = currAmount + LAmount;
 
+            Ingredients working = ingredientList.get(key);
+            //ingredientList.get(key).setAmount(newAmount);
 
-        Intent intent = new Intent(this, addItem.class);
+            mRootRef.child("Inventory").child(groupId).child(String.valueOf(key)).setValue(newAmount);
+        }
+
+        else
+        {
+            ingredientList.add(adding);
+
+            mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+        }
+            Intent intent = new Intent(this, Inventory.class);
         startActivity(intent);
     }
 }
