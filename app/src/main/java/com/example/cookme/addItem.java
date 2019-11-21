@@ -2,11 +2,13 @@ package com.example.cookme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,11 +64,42 @@ public class addItem extends AppCompatActivity {
         });
 
         doneButton = (Button) findViewById(R.id.doneButton);
-        doneButton.setOnClickListener(new View.OnClickListener() {
+        //doneButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                openActivity2(ingredientList);
+                //openActivity2(ingredientList);
+                doneButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(TextUtils.isEmpty(recipe_direction.getText().toString()))
+                                {
+                                    Toast.makeText(getApplicationContext(), "Please fill in the blank", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    try {
+                                        recipe_3.setDirections(recipe_direction.getText().toString());
+                                        ref.child("Recipe").push().setValue(recipe_3);
+                                        Toast.makeText(getApplicationContext(), "Recipe's Direction Added", Toast.LENGTH_LONG).show();
+                                        Intent i = new Intent(getApplicationContext(), Recipe_Main.class);
+                                        startActivity(i);
+                                    }
+                                    catch (Exception e)
+                                    {
+
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
             }
         });
 
@@ -97,7 +130,7 @@ public class addItem extends AppCompatActivity {
         Amount = amount.getText().toString();
         Unit = unit.getText().toString();
 
-        long LAmount = Long.parseLong(Amount);
+        /*long LAmount = Long.parseLong(Amount);
         //Ingredient take in: String name, String unit, long amount
         Ingredients adding = new Ingredients(Name, Unit, LAmount);
 
@@ -131,5 +164,6 @@ public class addItem extends AppCompatActivity {
         }
             Intent intent = new Intent(this, Inventory.class);
         startActivity(intent);
+        */
     }
 }
