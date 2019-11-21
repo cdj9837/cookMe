@@ -48,7 +48,6 @@ public class Recipe_Main extends AppCompatActivity {
         final ArrayList<Recipe> recipeList = new ArrayList<>();
         final ArrayList<MissingIngredientFromRecipe> missingList = new ArrayList<>();
 
-
         final Listview_Adapter adapter = new Listview_Adapter(this, R.layout.main_recipe_layout, missingList); //pass missingList just for display purposes.
 
         //TODO need to grab current groupID
