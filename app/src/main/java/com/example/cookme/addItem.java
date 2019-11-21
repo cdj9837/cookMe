@@ -50,6 +50,25 @@ public class addItem extends AppCompatActivity {
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
 
+        mRootRef.child("Inventory").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+                    for (DataSnapshot inventorySnapShot : dataSnapshot.getChildren()) {
+                        Ingredients r = inventorySnapShot.getValue(Ingredients.class);
+                        ingredientList.add(r);
+                    }
+                    adapter.notifyDataSetChanged();
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "onCancelled: ", databaseError.toException() );
+            }
+        });
 
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,14 +92,40 @@ public class addItem extends AppCompatActivity {
                             Name = name.getText().toString();
                             Amount = amount.getText().toString();
                             Unit = unit.getText().toString();
+                            long LAmount = Long.parseLong(Amount);
 
                             try {
                                 //recipe_3.setDirections(recipe_direction.getText().toString());
-                                Ingredients newIngr = new Ingredients(Name, Unit, Long.parseLong(Amount));
-                                mRootRef.child("Inventory").child(groupId).push().setValue(newIngr);
-                                Toast.makeText(getApplicationContext(), "Added new item", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(getApplicationContext(), Inventory.class);
-                                startActivity(i);
+                                Ingredients newIngr = new Ingredients(Name, Unit, LAmount);
+                                int key=-1;
+                                for(int i = 0; i<ingredientList.size(); i++)
+                                {
+                                    if(newIngr.getName().toLowerCase() == ingredientList.get(i).getName().toLowerCase())
+                                    {
+                                        key = i;
+                                    }
+                                }
+
+                                if(key!=-1)
+                                {
+                                    long currAmount = ingredientList.get(key).getAmount();
+                                    long newAmount = currAmount + LAmount;
+                                    //update data syntax:
+                                    //mDatabase.child("users").child(userId).child("username").setValue(name);
+
+                                    //Ingredients working = ingredientList.get(key);
+                                    ingredientList.get(key).setAmount(newAmount);
+
+                                    mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+                                }
+
+                                else
+                                {
+                                    mRootRef.child("Inventory").child(groupId).push().setValue(newIngr);
+                                    Toast.makeText(getApplicationContext(), "Added new item", Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(getApplicationContext(), Inventory.class);
+                                    startActivity(i);
+                                }
                             }
                             catch (Exception e)
                             {
