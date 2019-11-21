@@ -48,12 +48,10 @@
         android:id="@+id/logoutBtn"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_above="@+id/inventory"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="91dp"
         android:background="@drawable/logout_button" />
 
 
