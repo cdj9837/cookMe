@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RecipeInfoActivity extends AppCompatActivity {
 
     ListView ingredientLV;
+    String groupId;
 
 
     @Override
@@ -22,6 +23,8 @@ public class RecipeInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_info);
         final DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+
+        groupId=MainActivity.groupID;
 
         final Recipe r = (Recipe) getIntent().getSerializableExtra("RecipeObj");
 
@@ -51,7 +54,7 @@ public class RecipeInfoActivity extends AppCompatActivity {
                         }
                     }
                     if(test == 0){
-                        mRootRef.child("Grocery").child("1").push().setValue(i);
+                        mRootRef.child("Grocery").child(groupId).push().setValue(i);
                     }
                 }
             }

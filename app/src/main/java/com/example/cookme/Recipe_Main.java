@@ -27,6 +27,7 @@ public class Recipe_Main extends AppCompatActivity {
 
     ListView recipe_listview;
     final static ArrayList<Ingredients> ingredientsList = new ArrayList<>();
+    String groupId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,8 @@ public class Recipe_Main extends AppCompatActivity {
         final Listview_Adapter adapter = new Listview_Adapter(this, R.layout.main_recipe_layout, missingList); //pass missingList just for display purposes.
 
         //TODO need to grab current groupID
-        mRootRef.child("Inventory").child("1").addListenerForSingleValueEvent(new ValueEventListener() {
+        groupId = MainActivity.groupID;
+        mRootRef.child("Inventory").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
