@@ -49,7 +49,7 @@ public class RecipeInfoActivity extends AppCompatActivity {
                 for(Ingredients i : r.Ingredients){
                     test = 0;
                     for(Ingredients j : Recipe_Main.ingredientsList){
-                        if(i.getName().toLowerCase() == j.getName().toLowerCase()){
+                        if(i.getName().toLowerCase().equals(j.getName().toLowerCase())){
                             test = 1;
                         }
                     }

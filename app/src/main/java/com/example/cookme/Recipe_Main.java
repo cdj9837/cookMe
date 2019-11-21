@@ -81,7 +81,7 @@ public class Recipe_Main extends AppCompatActivity {
                                 for(int j = 0; j < recipeList.get(i).getIngredients().size(); j++) {
                                     tell=-1;
                                     for(Ingredients ing: ingredientsList){
-                                        if (ing.getName().toLowerCase() == recipeList.get(i).getIngredients().get(j).getName().toLowerCase()) {
+                                        if (ing.getName().toLowerCase().equals(recipeList.get(i).getIngredients().get(j).getName().toLowerCase())) {
                                             tell =1;
                                         }
 
