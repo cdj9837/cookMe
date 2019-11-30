@@ -3,11 +3,13 @@ package com.example.cookme;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +20,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
 
     EditText etEmail;
     Button submitBtn;
+    TextView cancelLink;
 
     FirebaseAuth firebaseAuth;
 
@@ -28,8 +31,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
 
         etEmail = (EditText) findViewById(R.id.resetPwEmail);
         submitBtn = (Button) findViewById(R.id.resetButton);
+        cancelLink = (TextView) findViewById(R.id.tvCancelLink);
 
         submitBtn.setOnClickListener(this);
+        cancelLink.setOnClickListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -40,6 +45,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()){
             case R.id.resetButton:
                 sendResetPwEmail();
+                break;
+
+            case R.id.tvCancelLink:
+                cancelResetPW();
                 break;
         }
     }
@@ -52,7 +61,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-//                            Log.d(TAG, )
+                            Intent i = new Intent(ForgotPassword.this, Login.class);
+                            startActivity(i);
+                            Toast.makeText(ForgotPassword.this, "Send link to reset password successfully. " +
+                                    "Check your email.", Toast.LENGTH_SHORT ).show();
                         }
                         else{
                             Toast.makeText(ForgotPassword.this, task.getException().getMessage(),
@@ -60,6 +72,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+    }
 
+    private void cancelResetPW(){
+        Intent i = new Intent(ForgotPassword.this, Login.class);
+        startActivity(i);
     }
 }
