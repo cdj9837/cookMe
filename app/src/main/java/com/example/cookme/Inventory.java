@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -68,7 +71,9 @@ public class Inventory extends AppCompatActivity
             }
         });
 
+
         inventoryLV.setAdapter(adapter);
+
 
         addButton = (Button) findViewById(R.id.addItem);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +98,25 @@ public class Inventory extends AppCompatActivity
                 openAddUser();
             }
         });
+
+        inventoryLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = "testing";
+                String name = ingredientList.get(position).getName();;
+
+                //Toast.makeText(getBaseContext(), name, Toast.LENGTH_LONG).show();
+
+                for(int i=0; i<ingredientList.size(); i++)
+                {
+                    if(ingredientList.get(i).getName() == name)
+                    {
+                        openInventoryInfoActivity(ingredientList.get(i));
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     public void openBack ()
@@ -110,6 +134,14 @@ public class Inventory extends AppCompatActivity
     public  void openAddUser()
     {
         Intent intent = new Intent(this, addUser.class);
+        startActivity(intent);
+    }
+
+    public void openInventoryInfoActivity(Ingredients obj){
+        String name = "Testing";
+        Toast.makeText(getBaseContext(), name, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, InventoryInfo.class);
+        //intent.putExtra("IngredientsObj", obj);
         startActivity(intent);
     }
 }

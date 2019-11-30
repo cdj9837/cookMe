@@ -1,5 +1,6 @@
 package com.example.cookme;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -14,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class InventoryInfo extends AppCompatActivity {
 
-    ListView ingredientLV;
+    //ListView ingredientLV;
     String groupId;
-
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,5 +60,19 @@ public class InventoryInfo extends AppCompatActivity {
                 }
             }
         });*/
+
+        backButton =(Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openBack();
+            }
+        });
+    }
+
+    public void openBack ()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
