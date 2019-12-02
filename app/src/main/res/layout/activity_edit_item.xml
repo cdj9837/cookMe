@@ -7,7 +7,6 @@
     tools:context=".addItem"
     android:background="@drawable/inventory_background">
 
-
     <TextView
         android:id="@+id/itemName"
         android:layout_width="wrap_content"
@@ -38,42 +37,45 @@
         android:layout_marginTop="238dp"
         android:text="Unit" />
 
-    <TextView
-        android:id="@+id/nameEdit"
+    <EditText
+        android:id="@+id/itemNameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="111dp"
         android:layout_marginEnd="61dp"
+        android:hint="egg"
         android:ems="10"
         android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/amountEdit"
+    <EditText
+        android:id="@+id/itemAmountEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="187dp"
+        android:layout_marginTop="161dp"
         android:layout_marginEnd="61dp"
+        android:hint="12"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
 
-    <TextView
-        android:id="@+id/unitEdit"
+    <EditText
+        android:id="@+id/itemUnitEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="238dp"
+        android:layout_marginTop="211dp"
         android:layout_marginEnd="61dp"
         android:ems="10"
+        android:hint="cup, tablespoon, teaspoon"
         android:inputType="textPersonName"
         />
 
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/doneButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
@@ -83,7 +85,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="332dp"
-        android:background="@drawable/edit_button" />
+        android:background="@drawable/done_button" />
 
     <Button
         android:id="@+id/backButton"
@@ -96,17 +98,6 @@
         android:layout_marginBottom="328dp"
         android:layout_toStartOf="@+id/doneButton"
         android:background="@drawable/back_button"/>
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="173dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="60dp"
-        android:layout_toStartOf="@+id/addUser"
-        android:text="TextView" />
 
 
 </RelativeLayout>

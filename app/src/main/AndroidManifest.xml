@@ -30,6 +30,7 @@
         <activity android:name=".Add_Recipe_Direction" />
         <activity android:name=".Recipe_Main" />
         <activity android:name=".InventoryInfo"/>
+        <activity android:name=".editItem"/>
 
         <activity android:name=".Grocery"/>
 

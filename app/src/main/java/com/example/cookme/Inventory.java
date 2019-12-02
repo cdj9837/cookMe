@@ -28,22 +28,20 @@ public class Inventory extends AppCompatActivity
 {
     private static final String TAG = "Inventory";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    //FirebaseAuth firebaseAuth;
-    //FirebaseUser firebaseUser;
-
     Button addButton;
     Button backButton;
     Button addUser;
     ListView inventoryLV;
     //String Uid;
     String groupId;
-
+    TextView textView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
+        textView1=(TextView)findViewById(R.id.textView1);
         inventoryLV = (ListView) findViewById(R.id.itemList);
         final ArrayList<Ingredients> ingredientList = new ArrayList<>();
 
@@ -111,7 +109,9 @@ public class Inventory extends AppCompatActivity
                 {
                     if(ingredientList.get(i).getName() == name)
                     {
-                        openInventoryInfoActivity(ingredientList.get(i));
+                        Intent intent = new Intent(Inventory.this, InventoryInfo.class);
+                        intent.putExtra("IngredientObj", ingredientList.get(i));
+                        startActivityForResult(intent,1);
                         break;
                     }
                 }
@@ -137,11 +137,20 @@ public class Inventory extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void openInventoryInfoActivity(Ingredients obj){
-        String name = "Testing";
-        Toast.makeText(getBaseContext(), name, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, InventoryInfo.class);
-        //intent.putExtra("IngredientsObj", obj);
-        startActivity(intent);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        //if(requestCode==2)
+        //{
+            String message=data.getStringExtra("MESSAGE");
+            textView1.setText(message);
+            //Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
+
+            //String message=data.getStringExtra("MESSAGE");
+            //textView1.setText(message);
+        //}
     }
+
 }
