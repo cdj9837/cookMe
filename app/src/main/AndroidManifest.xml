@@ -11,16 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Favorite_Recipe"></activity>
         <activity android:name=".Open_Animation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ForgotPassword" />
-        <activity android:name=".Inventory"></activity>
-        <activity android:name=".Login">
-        </activity>
+        <activity android:name=".Inventory" />
+        <activity android:name=".Login"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
         <activity android:name=".addItem" />
@@ -29,11 +30,8 @@
         <activity android:name=".Add_Ingredients" />
         <activity android:name=".Add_Recipe_Direction" />
         <activity android:name=".Recipe_Main" />
-
-        <activity android:name=".Grocery"/>
-
-        <activity android:name=".RecipeInfoActivity"></activity>
-
+        <activity android:name=".Grocery" />
+        <activity android:name=".RecipeInfoActivity" />
     </application>
 
 </manifest>
