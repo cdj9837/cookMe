@@ -59,7 +59,7 @@
         android:layout_marginEnd="61dp"
         android:hint="12"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
 
     <EditText

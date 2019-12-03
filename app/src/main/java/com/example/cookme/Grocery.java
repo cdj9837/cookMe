@@ -32,11 +32,10 @@ public class Grocery extends AppCompatActivity {
     //String Uid;
     String groupId;
     final ArrayList<Ingredients> ingredientList = new ArrayList<>();
-    int key=-1;
+    int key = -1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grocery_list);
 
@@ -44,26 +43,26 @@ public class Grocery extends AppCompatActivity {
 
 
         groupId = MainActivity.groupID;
-        final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
+        final IngredientsListAdapter adapter = new IngredientsListAdapter(this, R.layout.ingredient_list_layout, ingredientList);
 
         //TODO This .child("1") is current group. Will need to be passed in from another activity or gotten from accessing currently logged in UID and getting it's group number.
         mRootRef.child("Grocery").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
-                    for (DataSnapshot inventorySnapShot : dataSnapshot.getChildren()) {
-                        Ingredients r = inventorySnapShot.getValue(Ingredients.class);
+                    for (DataSnapshot grocerySnapShot : dataSnapshot.getChildren()) {
+                        Ingredients r = grocerySnapShot.getValue(Ingredients.class);
                         ingredientList.add(r);
                     }
                     adapter.notifyDataSetChanged();
-                } catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "onCancelled: ", databaseError.toException() );
+                Log.w(TAG, "onCancelled: ", databaseError.toException());
             }
         });
 
@@ -80,7 +79,7 @@ public class Grocery extends AppCompatActivity {
             }
         });
 
-        backButton =(Button) findViewById(R.id.backButton);
+        backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,21 +87,19 @@ public class Grocery extends AppCompatActivity {
             }
         });
 
-
         inventoryLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = "testing";
-                String name = ingredientList.get(position).getName();;
+                String name = ingredientList.get(position).getName();
+                ;
 
-                for(int i=0; i<ingredientList.size(); i++)
-                {
-                    if(ingredientList.get(i).getName() == name)
-                    {
+                for (int i = 0; i < ingredientList.size(); i++) {
+                    if (ingredientList.get(i).getName() == name) {
                         key = i;
-                        Intent intent = new Intent(Grocery.this, GroceryInfo.class);
-                        //intent.putExtra("IngredientObj", ingredientList.get(i));
-                        startActivity(intent);
+                        Intent intent = new Intent(Grocery.this, InventoryInfo.class);
+                        intent.putExtra("IngredientObj", ingredientList.get(i));
+                        startActivityForResult(intent, 1);
                         break;
                     }
                 }
@@ -110,22 +107,25 @@ public class Grocery extends AppCompatActivity {
         });
     }
 
-    public void openBack ()
-    {
+    public void openBack() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void openAddItem ()
-    {
-        Intent intent = new Intent(this, addItemGrocery.class);
+    public void openAddItem() {
+        Intent intent = new Intent(this, addItem.class);
         startActivity(intent);
     }
 
+    public void openAddUser() {
+        Intent intent = new Intent(this, addUser.class);
+        startActivity(intent);
+    }
 
-    /*@Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
 
         if (resultCode != 1) {
             Bundle extract = data.getExtras();
@@ -139,13 +139,11 @@ public class Grocery extends AppCompatActivity {
 
             mRootRef.child("Grocery").child(groupId).setValue(ingredientList);
 
-            if(ingredientList.get(key).getAmount()==0.0)
-            {
+            if (ingredientList.get(key).getAmount() == 0.0) {
                 ArrayList<Ingredients> copy = new ArrayList<>();
-                for(int i=0; i<ingredientList.size(); i++)
-                {
-                    if(i==key)
-                    {
+                //mRootRef.child("Inventory").child(groupId).child(Integer.toString(key)).removeValue();
+                for (int i = 0; i < ingredientList.size(); i++) {
+                    if (i == key) {
                         i++;
                     }
                     copy.add(ingredientList.get(i));
@@ -155,10 +153,12 @@ public class Grocery extends AppCompatActivity {
                 mRootRef.child("Grocery").child(groupId).setValue(copy);
             }
 
+            Intent intent = new Intent(this, Grocery.class);
+            startActivity(intent);
+
         }
-
-        Intent intent = new Intent(this, Grocery.class);
-        startActivity(intent);
-
-    }*/
+    }
 }
+
+
+

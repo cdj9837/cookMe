@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class addItemGrocery extends AppCompatActivity {
-    private static final String TAG = "addItem";
+    private static final String TAG = "addItemGrocery";
 
     Button doneButton;
     Button backButton;
@@ -52,8 +52,8 @@ public class addItemGrocery extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
-                    for (DataSnapshot inventorySnapShot : dataSnapshot.getChildren()) {
-                        Ingredients r = inventorySnapShot.getValue(Ingredients.class);
+                    for (DataSnapshot grocerySnapShot : dataSnapshot.getChildren()) {
+                        Ingredients r = grocerySnapShot.getValue(Ingredients.class);
                         ingredientList.add(r);
                     }
                     adapter.notifyDataSetChanged();
@@ -111,6 +111,7 @@ public class addItemGrocery extends AppCompatActivity {
                                 {
                                     Double currAmount = ingredientList.get(key).getAmount();
                                     Double newAmount = currAmount + LAmount;
+
                                     //update data syntax:
                                     //mDatabase.child("users").child(userId).child("username").setValue(name);
                                     ingredientList.get(key).setAmount(newAmount);
@@ -122,7 +123,7 @@ public class addItemGrocery extends AppCompatActivity {
                                 {
                                     mRootRef.child("Grocery").child(groupId).push().setValue(newIngr);
                                     Toast.makeText(getApplicationContext(), "Added new item", Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(getApplicationContext(), Inventory.class);
+                                    Intent i = new Intent(getApplicationContext(), Grocery.class);
                                     startActivity(i);
                                 }
                             }
@@ -166,4 +167,3 @@ public class addItemGrocery extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
