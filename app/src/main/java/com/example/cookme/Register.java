@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth firebaseAuth;
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     FirebaseUser firebaseUser;
+    String newKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         String name = etName_R.getText().toString().trim();
         String email = etEmail_R.getText().toString().trim();
         String password = etPassword_R.getText().toString().trim();
+        final String groupID = groupId.getText().toString().trim();
 
         if (TextUtils.isEmpty(name)){
             Toast.makeText(this, "Please enter your name.", Toast.LENGTH_SHORT).show();
@@ -82,6 +84,19 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+
+                            String userID;
+                            firebaseUser = firebaseAuth.getCurrentUser();
+                            userID = firebaseUser.getUid();
+
+                            //add groupID
+                            if(TextUtils.isEmpty(groupID)){
+                                newKey = mRootRef.child("Inventory").push().getKey();
+                                mRootRef.child("groupID").child(userID).setValue(newKey);
+                            } else { //if groupID is provided
+                                mRootRef.child("groupID").child(userID).setValue(groupID);
+                            }
+
                             Toast.makeText(Register.this, "Register Sucessfully",
                                     Toast.LENGTH_SHORT).show();
                             Intent home_activity = new Intent(Register.this, MainActivity.class);
