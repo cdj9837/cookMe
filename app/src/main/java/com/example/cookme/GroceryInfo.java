@@ -17,7 +17,7 @@ public class GroceryInfo extends AppCompatActivity {
     String groupId;
     Button backButton;
     Button editButton;
-    TextView nameEdit, amountEdit, unitEdit,textView1;
+    TextView nameEdit, amountEdit, unitEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,6 @@ public class GroceryInfo extends AppCompatActivity {
         nameEdit = (TextView) findViewById(R.id.nameEdit);
         amountEdit = (TextView) findViewById(R.id.amountEdit);
         unitEdit = (TextView) findViewById(R.id.unitEdit);
-        textView1 = (TextView) findViewById(R.id.textView1);
 
         String name, amount, unit;
         double am;
@@ -47,14 +46,14 @@ public class GroceryInfo extends AppCompatActivity {
         amountEdit.setText(amount);
         unitEdit.setText(unit);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
+        /*backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
                 setResult(1,intent);
                 finish();
             }
-        });
+        });*/
 
         /*editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +66,7 @@ public class GroceryInfo extends AppCompatActivity {
         });*/
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
@@ -89,7 +88,7 @@ public class GroceryInfo extends AppCompatActivity {
         Intent intent=new Intent();
         intent.putExtras(send);
         setResult(2,intent);
-        finish();//finishing activity*/
+        finish();//finishing activity
 
-    }
+    }*/
 }

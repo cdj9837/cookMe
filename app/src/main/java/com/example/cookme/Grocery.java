@@ -101,8 +101,8 @@ public class Grocery extends AppCompatActivity {
                     {
                         key = i;
                         Intent intent = new Intent(Grocery.this, GroceryInfo.class);
-                        intent.putExtra("IngredientObj", ingredientList.get(i));
-                        startActivityForResult(intent,1);
+                        //intent.putExtra("IngredientObj", ingredientList.get(i));
+                        startActivity(intent);
                         break;
                     }
                 }
@@ -118,12 +118,12 @@ public class Grocery extends AppCompatActivity {
 
     public void openAddItem ()
     {
-        Intent intent = new Intent(this, addItem.class);
+        Intent intent = new Intent(this, addItemGrocery.class);
         startActivity(intent);
     }
 
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -160,5 +160,5 @@ public class Grocery extends AppCompatActivity {
         Intent intent = new Intent(this, Grocery.class);
         startActivity(intent);
 
-    }
+    }*/
 }
