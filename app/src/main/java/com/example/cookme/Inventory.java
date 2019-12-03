@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,24 +28,25 @@ public class Inventory extends AppCompatActivity
 {
     private static final String TAG = "Inventory";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    //FirebaseAuth firebaseAuth;
-    //FirebaseUser firebaseUser;
-
     Button addButton;
     Button backButton;
     Button addUser;
     ListView inventoryLV;
     //String Uid;
     String groupId;
-
+    TextView textView1;
+    final ArrayList<Ingredients> ingredientList = new ArrayList<>();
+    int key=-1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
+        textView1=(TextView)findViewById(R.id.textView1);
         inventoryLV = (ListView) findViewById(R.id.itemList);
-        final ArrayList<Ingredients> ingredientList = new ArrayList<>();
+
 
         groupId = MainActivity.groupID;
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
@@ -68,7 +72,9 @@ public class Inventory extends AppCompatActivity
             }
         });
 
+
         inventoryLV.setAdapter(adapter);
+
 
         addButton = (Button) findViewById(R.id.addItem);
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +99,26 @@ public class Inventory extends AppCompatActivity
                 openAddUser();
             }
         });
+
+        inventoryLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = "testing";
+                String name = ingredientList.get(position).getName();;
+
+                for(int i=0; i<ingredientList.size(); i++)
+                {
+                    if(ingredientList.get(i).getName() == name)
+                    {
+                        key = i;
+                        Intent intent = new Intent(Inventory.this, InventoryInfo.class);
+                        intent.putExtra("IngredientObj", ingredientList.get(i));
+                        startActivityForResult(intent,1);
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     public void openBack ()
@@ -112,4 +138,56 @@ public class Inventory extends AppCompatActivity
         Intent intent = new Intent(this, addUser.class);
         startActivity(intent);
     }
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == 1)
+            textView1.setText("Testing back");
+
+
+        if (resultCode != 1) {
+            Bundle extract = data.getExtras();
+
+            Ingredients ingred = (Ingredients) extract.getSerializable("IngrOBJ");
+            String message = ingred.getName();
+
+            ingredientList.get(key).setName(ingred.getName());
+            ingredientList.get(key).setAmount(ingred.getAmount());
+            ingredientList.get(key).setUnit(ingred.getUnit());
+
+            mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+
+            textView1.setText(message);
+
+            if(ingredientList.get(key).getAmount()==0.0)
+            {
+                ArrayList<Ingredients> copy = new ArrayList<>();
+                textView1.setText("trying to delete");
+                //mRootRef.child("Inventory").child(groupId).child(Integer.toString(key)).removeValue();
+                for(int i=0; i<ingredientList.size(); i++)
+                {
+                    if(i==key)
+                    {
+                        i++;
+                    }
+                    copy.add(ingredientList.get(i));
+
+                }
+
+                mRootRef.child("Inventory").child(groupId).setValue(copy);
+            }
+            else
+                textView1.setText("trying");
+
+            }
+
+        Intent intent = new Intent(this, Inventory.class);
+        startActivity(intent);
+
+        }
+    }
+
+
+

@@ -125,6 +125,17 @@ public class Recipe_Main extends AppCompatActivity {
                         openRecipeInfoActivity(recipeList.get(i));
                         //position is index of clicked item in list view
                         break;
+
+                        /*
+                        for(int i=0; i<inventoryList.size(); i++)
+                        {
+                            if(ingredientList.get(i).getName() == name)[
+                                openInventoryInfoActivity(ingredientList.get(i));
+                                break;
+                            }
+
+                        }
+                         */
                     }
                 }
             }
