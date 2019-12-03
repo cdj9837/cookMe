@@ -79,7 +79,7 @@ public class Favorite_Recipe extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                mRootRef.child("Favorite").addListenerForSingleValueEvent(new ValueEventListener() {
+                mRootRef.child("Favorite").child(MainActivity.groupID).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         try {
