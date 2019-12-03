@@ -50,14 +50,15 @@ public class Favorite_Recipe extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        fav_rep.setOnClickListener(new View.OnClickListener() {
+        /*fav_rep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Favorite_Recipe.class);
                 startActivity(i);
             }
         });
-        recipe_listview = (ListView)findViewById(R.id.recipe_listview);
+         */
+        recipe_listview = (ListView)findViewById(R.id.fav_recipe_listview);
 
         final ArrayList<Recipe> recipeList = new ArrayList<>();
         final ArrayList<MissingIngredientFromRecipe> missingList = new ArrayList<>();

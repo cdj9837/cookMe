@@ -61,7 +61,7 @@ public class RecipeInfoActivity extends AppCompatActivity {
         fav_rep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRootRef.child("Favorite").push().setValue(r);
+                mRootRef.child("Favorite").child(MainActivity.groupID).push().setValue(r);
                 Toast.makeText(getApplicationContext(), "Added to Favorite Recipe list", Toast.LENGTH_LONG).show();
             }
         });

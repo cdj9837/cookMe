@@ -48,7 +48,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="55dp"
-        android:text="All Recipes" />
+        android:background=" #5c7f89"
+        android:text="All Recipes"
+        android:textColor="#eddbcd" />
 
     <Button
         android:id="@+id/favorite_recipe_button"
@@ -58,7 +60,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="210dp"
         android:layout_marginTop="55dp"
-        android:text="Favorite" />
+        android:background=" #5c7f89"
+        android:text="Favorite"
+        android:textColor="#eddbcd" />
 
     <Button
         android:id="@+id/home_button"
