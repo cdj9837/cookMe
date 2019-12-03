@@ -24,8 +24,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Inventory extends AppCompatActivity
-{
+public class Inventory extends AppCompatActivity {
     private static final String TAG = "Inventory";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     Button addButton;
@@ -34,22 +33,19 @@ public class Inventory extends AppCompatActivity
     ListView inventoryLV;
     //String Uid;
     String groupId;
-    TextView textView1;
     final ArrayList<Ingredients> ingredientList = new ArrayList<>();
-    int key=-1;
+    int key = -1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        textView1=(TextView)findViewById(R.id.textView1);
         inventoryLV = (ListView) findViewById(R.id.itemList);
 
 
         groupId = MainActivity.groupID;
-        final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
+        final IngredientsListAdapter adapter = new IngredientsListAdapter(this, R.layout.ingredient_list_layout, ingredientList);
 
         //TODO This .child("1") is current group. Will need to be passed in from another activity or gotten from accessing currently logged in UID and getting it's group number.
         mRootRef.child("Inventory").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,14 +57,14 @@ public class Inventory extends AppCompatActivity
                         ingredientList.add(r);
                     }
                     adapter.notifyDataSetChanged();
-                } catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "onCancelled: ", databaseError.toException() );
+                Log.w(TAG, "onCancelled: ", databaseError.toException());
             }
         });
 
@@ -85,7 +81,7 @@ public class Inventory extends AppCompatActivity
             }
         });
 
-        backButton =(Button) findViewById(R.id.backButton);
+        backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,16 +100,15 @@ public class Inventory extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = "testing";
-                String name = ingredientList.get(position).getName();;
+                String name = ingredientList.get(position).getName();
+                ;
 
-                for(int i=0; i<ingredientList.size(); i++)
-                {
-                    if(ingredientList.get(i).getName() == name)
-                    {
+                for (int i = 0; i < ingredientList.size(); i++) {
+                    if (ingredientList.get(i).getName() == name) {
                         key = i;
                         Intent intent = new Intent(Inventory.this, InventoryInfo.class);
                         intent.putExtra("IngredientObj", ingredientList.get(i));
-                        startActivityForResult(intent,1);
+                        startActivityForResult(intent, 1);
                         break;
                     }
                 }
@@ -121,20 +116,17 @@ public class Inventory extends AppCompatActivity
         });
     }
 
-    public void openBack ()
-    {
+    public void openBack() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void openAddItem ()
-    {
+    public void openAddItem() {
         Intent intent = new Intent(this, addItem.class);
         startActivity(intent);
     }
 
-    public  void openAddUser()
-    {
+    public void openAddUser() {
         Intent intent = new Intent(this, addUser.class);
         startActivity(intent);
     }
@@ -142,9 +134,6 @@ public class Inventory extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == 1)
-            textView1.setText("Testing back");
 
 
         if (resultCode != 1) {
@@ -159,17 +148,11 @@ public class Inventory extends AppCompatActivity
 
             mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
 
-            textView1.setText(message);
-
-            if(ingredientList.get(key).getAmount()==0.0)
-            {
+            if (ingredientList.get(key).getAmount() == 0.0) {
                 ArrayList<Ingredients> copy = new ArrayList<>();
-                textView1.setText("trying to delete");
                 //mRootRef.child("Inventory").child(groupId).child(Integer.toString(key)).removeValue();
-                for(int i=0; i<ingredientList.size(); i++)
-                {
-                    if(i==key)
-                    {
+                for (int i = 0; i < ingredientList.size(); i++) {
+                    if (i == key) {
                         i++;
                     }
                     copy.add(ingredientList.get(i));
@@ -178,16 +161,13 @@ public class Inventory extends AppCompatActivity
 
                 mRootRef.child("Inventory").child(groupId).setValue(copy);
             }
-            else
-                textView1.setText("trying");
 
-            }
-
-        Intent intent = new Intent(this, Inventory.class);
-        startActivity(intent);
+            Intent intent = new Intent(this, Inventory.class);
+            startActivity(intent);
 
         }
     }
+}
 
 
 
