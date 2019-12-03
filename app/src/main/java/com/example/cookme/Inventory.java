@@ -35,6 +35,8 @@ public class Inventory extends AppCompatActivity
     //String Uid;
     String groupId;
     TextView textView1;
+    final ArrayList<Ingredients> ingredientList = new ArrayList<>();
+    int key=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class Inventory extends AppCompatActivity
 
         textView1=(TextView)findViewById(R.id.textView1);
         inventoryLV = (ListView) findViewById(R.id.itemList);
-        final ArrayList<Ingredients> ingredientList = new ArrayList<>();
+
 
         groupId = MainActivity.groupID;
         final IngredientsListAdapter adapter = new IngredientsListAdapter(this,R.layout.ingredient_list_layout,ingredientList);
@@ -103,12 +105,11 @@ public class Inventory extends AppCompatActivity
                 String item = "testing";
                 String name = ingredientList.get(position).getName();;
 
-                //Toast.makeText(getBaseContext(), name, Toast.LENGTH_LONG).show();
-
                 for(int i=0; i<ingredientList.size(); i++)
                 {
                     if(ingredientList.get(i).getName() == name)
                     {
+                        key = i;
                         Intent intent = new Intent(Inventory.this, InventoryInfo.class);
                         intent.putExtra("IngredientObj", ingredientList.get(i));
                         startActivityForResult(intent,1);
@@ -141,16 +142,24 @@ public class Inventory extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        // check if the request code is same as what is passed  here it is 2
-        //if(requestCode==2)
-        //{
-            String message=data.getStringExtra("MESSAGE");
-            textView1.setText(message);
-            //Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
+        Bundle extract = data.getExtras();
 
-            //String message=data.getStringExtra("MESSAGE");
-            //textView1.setText(message);
-        //}
+        Ingredients ingred = (Ingredients) extract.getSerializable("IngrOBJ");
+        String message = ingred.getName();
+
+        /*
+         ingredientList.get(key).setAmount((Long)newAmount);
+
+         mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+         */
+
+        ingredientList.get(key).setName(ingred.getName());
+        ingredientList.get(key).setAmount((long)ingred.getAmount());
+        ingredientList.get(key).setUnit(ingred.getUnit());
+
+        mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+
+        textView1.setText(message);
     }
 
 }

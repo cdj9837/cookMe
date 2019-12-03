@@ -84,13 +84,35 @@ public class InventoryInfo extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        final Ingredients ingr = (Ingredients) getIntent().getSerializableExtra("IngredientObj");
+        /*
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        //Type object = (Type) bundle.getSerializable("KEY");
+        DataClass myData = (DataClass) bundle.getSerializable("MY_DATA");
 
-        String message=ingr.getName();
+         */
+        Bundle extract = data.getExtras();
+
+        Ingredients ingred = (Ingredients) extract.getSerializable("IngrOBJ");
+        String message = ingred.getName();
+
+
+
+        /*String message = data.getStringExtra("MESSAGE");
         Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
-        //textView1.setText(message);
+        //textView1.setText(message);*/
+
+        /*
+                Bundle bundle = new Bundle;
+                bundle.putSerializable("KEY", YOUR_OBJECT);
+                intent.putExtras(bundle);
+                 */
+
+        Bundle send = new Bundle();
+        send.putSerializable("IngrOBJ", ingred);
+
         Intent intent=new Intent();
-        intent.putExtra("MESSAGE",message);
+        intent.putExtras(send);
         setResult(2,intent);
         finish();//finishing activity*/
 

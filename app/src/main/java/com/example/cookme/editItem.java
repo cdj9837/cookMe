@@ -55,13 +55,30 @@ public class editItem extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ingr.setName(name.getText().toString());
-                ingr.setAmount(Long.parseLong(amount.getText().toString()));
-                ingr.setUnit(unit.getText().toString());
+                String nameSet = name.getText().toString();
+                //Long amountSet = Long.parseLong(amount.getText().toString());
+                String Amount = amount.getText().toString();
+                //long LAmount = Long.parseLong(Amount);
+                String unitSet = unit.getText().toString();
+                ingr.setName(nameSet);
+                //ingr.setAmount(amountSet);
+                ingr.setUnit(unitSet);
 
-                String message=ingr.getName();
+                Ingredients sendBack = new Ingredients(nameSet, unitSet, 22.0);
+
+                /*
+                Bundle bundle = new Bundle;
+                bundle.putSerializable("KEY", YOUR_OBJECT);
+                intent.putExtras(bundle);
+                 */
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("IngrOBJ", sendBack);
+
+
+                //String message=ingr.getName();
+                String message = sendBack.getName();
                 Intent intent=new Intent();
-                intent.putExtra("IngredientObj",ingr);
+                intent.putExtras(bundle);
                 setResult(2,intent);
                 finish();
             }
@@ -79,17 +96,5 @@ public class editItem extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void openBack ()
-    {
-        Intent intent = new Intent(this, InventoryInfo.class);
-        startActivity(intent);
-    }
-
-    public void openDone ()
-    {
-        Intent intent = new Intent(this, Inventory.class);
-        startActivity(intent);
     }
 }
