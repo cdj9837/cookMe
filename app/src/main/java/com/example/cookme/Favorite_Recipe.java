@@ -1,5 +1,8 @@
 package com.example.cookme;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,9 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,20 +20,19 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Recipe_Main extends AppCompatActivity {
-
+public class Favorite_Recipe extends AppCompatActivity {
     private static final String TAG = "RecipeActivity";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
     ListView recipe_listview;
     final static ArrayList<Ingredients> ingredientsList = new ArrayList<>();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe__main);
-
-        Button add_recipe_button = (Button) findViewById(R.id.add_button);
+        setContentView(R.layout.activity_favorite__recipe);
         Button all_rep = (Button) findViewById(R.id.all_recipe_button);
         Button fav_rep = (Button) findViewById(R.id.favorite_recipe_button);
         Button home = (Button) findViewById(R.id.home_button);
@@ -41,13 +40,6 @@ public class Recipe_Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
-        add_recipe_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Add_Recipe_Name.class);
                 startActivity(i);
             }
         });
@@ -65,8 +57,6 @@ public class Recipe_Main extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
         recipe_listview = (ListView)findViewById(R.id.recipe_listview);
 
         final ArrayList<Recipe> recipeList = new ArrayList<>();
@@ -88,7 +78,7 @@ public class Recipe_Main extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                mRootRef.child("Recipe").addListenerForSingleValueEvent(new ValueEventListener() {
+                mRootRef.child("Favorite").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         try {
@@ -163,5 +153,3 @@ public class Recipe_Main extends AppCompatActivity {
 
 
 }
-
-
