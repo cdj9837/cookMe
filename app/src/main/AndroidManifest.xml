@@ -34,6 +34,8 @@
         <activity android:name=".RecipeInfoActivity" />
         <activity android:name=".InventoryInfo"/>
         <activity android:name=".editItem"/>
+        <activity android:name=".addItemGrocery"/>
+        <activity android:name=".GroceryInfo"/>
     </application>
 
 </manifest>
