@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Inventory"
-    android:background="@drawable/inventory_background">
+    android:background="@drawable/grocery_background">
 
     <Button
         android:id="@+id/addItem"
@@ -16,16 +16,6 @@
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="7dp"
         android:background="@drawable/plus_square_button" />
-
-    <Button
-        android:id="@+id/addUser"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/addItem"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginBottom="615dp"
-        android:background="@drawable/plus_round_button" />
 
     <Button
         android:id="@+id/backButton"

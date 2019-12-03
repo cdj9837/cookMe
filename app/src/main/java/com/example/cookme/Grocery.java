@@ -38,7 +38,7 @@ public class Grocery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory);
+        setContentView(R.layout.activity_grocery_list);
 
         inventoryLV = (ListView) findViewById(R.id.itemList);
 
