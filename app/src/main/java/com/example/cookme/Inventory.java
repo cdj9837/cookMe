@@ -39,7 +39,8 @@ public class Inventory extends AppCompatActivity
     int key=-1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
@@ -139,27 +140,54 @@ public class Inventory extends AppCompatActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bundle extract = data.getExtras();
 
-        Ingredients ingred = (Ingredients) extract.getSerializable("IngrOBJ");
-        String message = ingred.getName();
+        if (resultCode == 1)
+            textView1.setText("Testing back");
 
-        /*
-         ingredientList.get(key).setAmount((Long)newAmount);
 
-         mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
-         */
+        if (resultCode != 1) {
+            Bundle extract = data.getExtras();
 
-        ingredientList.get(key).setName(ingred.getName());
-        ingredientList.get(key).setAmount((long)ingred.getAmount());
-        ingredientList.get(key).setUnit(ingred.getUnit());
+            Ingredients ingred = (Ingredients) extract.getSerializable("IngrOBJ");
+            String message = ingred.getName();
 
-        mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+            ingredientList.get(key).setName(ingred.getName());
+            ingredientList.get(key).setAmount(ingred.getAmount());
+            ingredientList.get(key).setUnit(ingred.getUnit());
 
-        textView1.setText(message);
+            mRootRef.child("Inventory").child(groupId).setValue(ingredientList);
+
+            textView1.setText(message);
+
+            if(ingredientList.get(key).getAmount()==0.0)
+            {
+                ArrayList<Ingredients> copy = new ArrayList<>();
+                textView1.setText("trying to delete");
+                //mRootRef.child("Inventory").child(groupId).child(Integer.toString(key)).removeValue();
+                for(int i=0; i<ingredientList.size(); i++)
+                {
+                    if(i==key)
+                    {
+                        i++;
+                    }
+                    copy.add(ingredientList.get(i));
+
+                }
+
+                mRootRef.child("Inventory").child(groupId).setValue(copy);
+            }
+            else
+                textView1.setText("trying");
+
+            }
+
+        Intent intent = new Intent(this, Inventory.class);
+        startActivity(intent);
+
+        }
     }
 
-}
+
+

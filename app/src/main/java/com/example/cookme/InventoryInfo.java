@@ -53,9 +53,7 @@ public class InventoryInfo extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String message=ingr.getName();
                 Intent intent=new Intent();
-                //intent.putExtra("MESSAGE",message);
                 setResult(1,intent);
                 finish();
             }
@@ -68,13 +66,6 @@ public class InventoryInfo extends AppCompatActivity {
                 Intent intent = new Intent(InventoryInfo.this, editItem.class);
                 intent.putExtra("IngredientObj", ingr);
                 startActivityForResult(intent,1);
-
-
-                /*String message=ingr.getName();
-                Intent intent=new Intent();
-                intent.putExtra("MESSAGE",message);
-                setResult(2,intent);
-                finish();//finishing activity*/
             }
         });
     }
@@ -84,29 +75,16 @@ public class InventoryInfo extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        /*
-        Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
-        //Type object = (Type) bundle.getSerializable("KEY");
-        DataClass myData = (DataClass) bundle.getSerializable("MY_DATA");
+        if(resultCode==1)
+        {
+            Intent intent=new Intent();
+            setResult(1,intent);
+            finish();
+        }
 
-         */
         Bundle extract = data.getExtras();
 
         Ingredients ingred = (Ingredients) extract.getSerializable("IngrOBJ");
-        String message = ingred.getName();
-
-
-
-        /*String message = data.getStringExtra("MESSAGE");
-        Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
-        //textView1.setText(message);*/
-
-        /*
-                Bundle bundle = new Bundle;
-                bundle.putSerializable("KEY", YOUR_OBJECT);
-                intent.putExtras(bundle);
-                 */
 
         Bundle send = new Bundle();
         send.putSerializable("IngrOBJ", ingred);
@@ -116,15 +94,5 @@ public class InventoryInfo extends AppCompatActivity {
         setResult(2,intent);
         finish();//finishing activity*/
 
-        // check if the request code is same as what is passed  here it is 2
-        //if(requestCode==2)
-        //{
-        //String message=data.getStringExtra("MESSAGE");
-        //textView1.setText(message);
-        //Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
-
-        //String message=data.getStringExtra("MESSAGE");
-        //textView1.setText(message);
-        //}
     }
 }

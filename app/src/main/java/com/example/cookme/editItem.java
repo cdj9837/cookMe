@@ -25,6 +25,7 @@ public class editItem extends AppCompatActivity {
 
     Button doneButton;
     Button backButton;
+    Button deleteButton;
     EditText name,amount, unit;
     String Name, Amount, Unit;
     String groupId = MainActivity.groupID;
@@ -42,7 +43,8 @@ public class editItem extends AppCompatActivity {
         amount =(EditText)findViewById(R.id.itemAmountEdit);
         unit = (EditText)findViewById(R.id.itemUnitEdit);
         doneButton = (Button) findViewById(R.id.doneButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        //backButton = (Button) findViewById(R.id.backButton);
+        deleteButton = (Button) findViewById(R.id.deleteButton);
 
 
         final Ingredients ingr = (Ingredients) getIntent().getSerializableExtra("IngredientObj");
@@ -56,21 +58,33 @@ public class editItem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nameSet = name.getText().toString();
-                //Long amountSet = Long.parseLong(amount.getText().toString());
+
                 String Amount = amount.getText().toString();
-                //long LAmount = Long.parseLong(Amount);
                 String unitSet = unit.getText().toString();
-                ingr.setName(nameSet);
-                //ingr.setAmount(amountSet);
-                ingr.setUnit(unitSet);
+                Double dAmount = Double.parseDouble(Amount);
 
-                Ingredients sendBack = new Ingredients(nameSet, unitSet, 22.0);
+                Ingredients sendBack = new Ingredients(nameSet, unitSet, dAmount);
 
-                /*
-                Bundle bundle = new Bundle;
-                bundle.putSerializable("KEY", YOUR_OBJECT);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("IngrOBJ", sendBack);
+                Intent intent=new Intent();
                 intent.putExtras(bundle);
-                 */
+                setResult(2,intent);
+                finish();
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String nameSet = name.getText().toString();
+                String Amount = amount.getText().toString();
+                String unitSet = unit.getText().toString();
+                Double dAmount = Double.parseDouble(Amount);
+
+                Ingredients sendBack = new Ingredients(nameSet, unitSet, 0.0);
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("IngrOBJ", sendBack);
 
@@ -81,20 +95,12 @@ public class editItem extends AppCompatActivity {
                 intent.putExtras(bundle);
                 setResult(2,intent);
                 finish();
+
             }
         });
 
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //String message=ingr.getName();
-                Intent intent=new Intent();
-                //intent.putExtra("MESSAGE",message);
-                setResult(1,intent);
-                finish();
-            }
-        });
+        
 
     }
 }

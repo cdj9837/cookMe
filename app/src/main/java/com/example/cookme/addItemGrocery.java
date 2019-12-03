@@ -109,8 +109,8 @@ public class addItemGrocery extends AppCompatActivity {
 
                                 if(key!=-1)
                                 {
-                                    long currAmount = (long)ingredientList.get(key).getAmount();
-                                    long newAmount = currAmount + LAmount;
+                                    Double currAmount = ingredientList.get(key).getAmount();
+                                    Double newAmount = currAmount + LAmount;
                                     //update data syntax:
                                     //mDatabase.child("users").child(userId).child("username").setValue(name);
                                     ingredientList.get(key).setAmount(newAmount);

@@ -82,22 +82,23 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="330dp"
         android:background="@drawable/done_button" />
 
     <Button
-        android:id="@+id/backButton"
+        android:id="@+id/deleteButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="298dp"
-        android:layout_marginBottom="328dp"
-        android:layout_toStartOf="@+id/doneButton"
-        android:background="@drawable/back_button"/>
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="288dp"
+        android:layout_marginRight="288dp"
+        android:layout_marginBottom="329dp"
+        android:background="@drawable/remove_button" />
 
 
 </RelativeLayout>
