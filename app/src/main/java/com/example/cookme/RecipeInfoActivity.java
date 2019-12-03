@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +33,7 @@ public class RecipeInfoActivity extends AppCompatActivity {
         TextView recipeInfoNameTV = (TextView)findViewById(R.id.recipeInfoNameTV);
         TextView recipeInfoDirectionsTV = (TextView)findViewById(R.id.recipeInfoDirectionsTV);
         Button makeButton = (Button)findViewById(R.id.makeBTN);
+        Button favoriteButton = (Button) findViewById(R.id.favorite_BTN);
         Button addToGroceryButton = (Button)findViewById(R.id.addToGroceryBTN);
 
         recipeInfoNameTV.setText(r.RecipeName);
@@ -57,6 +59,17 @@ public class RecipeInfoActivity extends AppCompatActivity {
                         mRootRef.child("Grocery").child(groupId).push().setValue(i);
                     }
                 }
+            }
+        });
+        // Pushing favorite recipe into Database
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //mRootRef.child("Favorite").child(groupId).push().setValue(r);
+                mRootRef.child("Favorite").push().setValue(r);
+                Toast.makeText(getApplicationContext(), "Added to Favorite Recipe List", Toast.LENGTH_LONG).show();
+
             }
         });
     }

@@ -1,5 +1,8 @@
 package com.example.cookme;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,9 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,11 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Recipe_Main extends AppCompatActivity {
-
+public class Favorite_Recipe extends AppCompatActivity {
     private static final String TAG = "RecipeActivity";
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-
     ListView recipe_listview;
     final static ArrayList<Ingredients> ingredientsList = new ArrayList<>();
     String groupId;
@@ -32,13 +30,10 @@ public class Recipe_Main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe__main);
-
-        Button add_recipe_button = (Button) findViewById(R.id.add_button);
+        setContentView(R.layout.activity_favorite__recipe);
         Button all_recipe_button = (Button) findViewById(R.id.all_recipe_button);
         Button fav_recipe_button = (Button) findViewById(R.id.favorite_recipe_button);
         Button homeBTN = (Button) findViewById(R.id.home_button);
-
         homeBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,14 +41,6 @@ public class Recipe_Main extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        add_recipe_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Add_Recipe_Name.class);
-                startActivity(i);
-            }
-        });
-
         all_recipe_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +48,6 @@ public class Recipe_Main extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         fav_recipe_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,14 +57,13 @@ public class Recipe_Main extends AppCompatActivity {
         });
 
 
-        recipe_listview = (ListView)findViewById(R.id.recipe_listview);
+        recipe_listview = (ListView)findViewById(R.id.fav_recipe_listview);
 
         final ArrayList<Recipe> recipeList = new ArrayList<>();
         final ArrayList<MissingIngredientFromRecipe> missingList = new ArrayList<>();
 
         final Listview_Adapter adapter = new Listview_Adapter(this, R.layout.main_recipe_layout, missingList); //pass missingList just for display purposes.
 
-        //TODO need to grab current groupID
         groupId = MainActivity.groupID;
         mRootRef.child("Inventory").child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,7 +78,7 @@ public class Recipe_Main extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                mRootRef.child("Recipe").addListenerForSingleValueEvent(new ValueEventListener() {
+                mRootRef.child("Favorite").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         try {
@@ -153,17 +138,6 @@ public class Recipe_Main extends AppCompatActivity {
                         openRecipeInfoActivity(recipeList.get(i));
                         //position is index of clicked item in list view
                         break;
-
-                        /*
-                        for(int i=0; i<inventoryList.size(); i++)
-                        {
-                            if(ingredientList.get(i).getName() == name)[
-                                openInventoryInfoActivity(ingredientList.get(i));
-                                break;
-                            }
-
-                        }
-                         */
                     }
                 }
             }
@@ -178,6 +152,3 @@ public class Recipe_Main extends AppCompatActivity {
     }
 
 }
-
-
-

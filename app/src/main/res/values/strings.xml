@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CookMe</string>
-    <string name="edtx1" > Enter ingredient name </string>
-    <string name="edtx2" > Enter ingredient amount </string>
-    <string name="edtx3" > Enter ingredient unit </string>
-    <string name="edtx4" > Enter ingredient notes </string>
+    <string name="edtx1"> Enter ingredient name </string>
+    <string name="edtx2"> Enter ingredient amount </string>
+    <string name="edtx3"> Enter ingredient unit </string>
+    <string name="edtx4"> Enter ingredient notes </string>
 </resources>
