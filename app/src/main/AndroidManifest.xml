@@ -11,25 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ForgotPassword"></activity>
-        <activity android:name=".Inventory"></activity>
+        <activity android:name=".Favorite_Recipe"></activity>
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".Inventory" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Register"></activity>
-        <activity android:name=".addItem"></activity>
-        <activity android:name=".addUser"></activity>
-        <activity android:name=".Add_Recipe_Name"></activity>
-        <activity android:name=".Add_Ingredients"></activity>
-        <activity android:name=".Add_Recipe_Direction"></activity>
-        <activity android:name=".Recipe_Main"></activity>
-        <activity android:name=".RecipeInfoActivity"></activity>
-
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Register" />
+        <activity android:name=".addItem" />
+        <activity android:name=".addUser" />
+        <activity android:name=".Add_Recipe_Name" />
+        <activity android:name=".Add_Ingredients" />
+        <activity android:name=".Add_Recipe_Direction" />
+        <activity android:name=".Recipe_Main" />
+        <activity android:name=".RecipeInfoActivity" />
     </application>
 
 </manifest>

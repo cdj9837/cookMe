@@ -61,4 +61,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingredientLV" />
+
+    <Button
+        android:id="@+id/fav_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="1350dp"
+        android:layout_marginStart="365dp"
+        android:background="@drawable/favorite_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientLV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
