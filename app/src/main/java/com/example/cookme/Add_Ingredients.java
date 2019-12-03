@@ -81,6 +81,6 @@ public class Add_Ingredients extends AppCompatActivity {
         ing_object.setName(ingredient_name.getText().toString());
         ing_object.setNotes(ingredient_note.getText().toString());
         ing_object.setUnit(ingredient_unit.getText().toString());
-        ing_object.setAmount(Long.parseLong(ingredient_amount.getText().toString()));
+        ing_object.setAmount(Double.parseDouble(ingredient_amount.getText().toString()));
     }
 }

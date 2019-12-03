@@ -76,7 +76,7 @@ class Ingredients implements Serializable {
         return Amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(Double amount) {
         Amount = amount;
     }
 }
